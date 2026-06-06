@@ -1,0 +1,267 @@
+/* V13 Módulo de Comando */
+.premium-card,
+.command-hero-card,
+.command-side-card,
+.admin-command-banner {
+  border: 1px solid rgba(218,166,58,.38);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(18,18,20,.94), rgba(5,5,6,.92)),
+    url('/assets/png/backgrounds/admin-panel.png') center/cover no-repeat;
+  box-shadow: 0 22px 70px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.035);
+  color: #f3f0e8;
+}
+
+.command-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap: 16px;
+}
+
+.command-hero-card,
+.command-side-card,
+.admin-command-banner,
+.premium-card {
+  padding: 18px;
+}
+
+.command-hero-card {
+  grid-row: span 2;
+}
+
+.command-actions,
+.command-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.command-shortcuts a {
+  flex: 1 1 180px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(218,166,58,.24);
+  color: #f7e2a8;
+  text-decoration: none;
+}
+
+.command-result {
+  margin-top: 14px;
+  max-height: 460px;
+  overflow: auto;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(0,0,0,.36);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.command-result code {
+  display: block;
+  white-space: pre-wrap;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.42);
+  color: #d9d9df;
+  font-size: .82rem;
+}
+
+.command-status-list {
+  display: grid;
+  gap: 8px;
+}
+
+.command-status-list > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.045);
+}
+
+.command-status-list small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+}
+
+.command-status-list .ok span,
+.command-kpi span.good {
+  color: #8ff0b4;
+}
+
+.command-status-list .warn span,
+.command-kpi span.bad {
+  color: #ffd27a;
+}
+
+.malena-status {
+  display: grid;
+  gap: 8px;
+}
+
+.malena-status span,
+.command-kpi,
+.profile-stats div,
+.ranking-row,
+.inventory-item {
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.30);
+  border: 1px solid rgba(218,166,58,.18);
+}
+
+.command-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.admin-command-banner {
+  width: min(1240px, calc(100% - 22px));
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-layout,
+.rankings-layout {
+  width: min(1240px, calc(100% - 22px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(255,255,255,.28), transparent 38%),
+    linear-gradient(135deg, #d9a63a, #1a1207);
+  color: #070707;
+  font-size: 3.3rem;
+  border: 1px solid rgba(255,255,255,.24);
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.profile-stats span,
+.inventory-item span,
+.ranking-row em {
+  display: block;
+  color: #f7e2a8;
+  font-style: normal;
+}
+
+.inventory-grid,
+.profile-history,
+.ranking-list {
+  display: grid;
+  gap: 10px;
+}
+
+.ranking-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.mission-grid,
+.event-grid {
+  width: min(1240px, calc(100% - 22px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.mission-icon,
+.event-badge,
+.rarity {
+  display: inline-flex;
+  width: max-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(218,166,58,.16);
+  border: 1px solid rgba(218,166,58,.34);
+  color: #f7e2a8;
+}
+
+.mission-progress {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.mission-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #d9a63a, #fff0b7);
+}
+
+.shop-hero {
+  width: min(1240px, calc(100% - 22px));
+  margin: 0 auto 16px;
+}
+
+.visual-shop-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.visual-shop-item::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -30% -20%;
+  height: 120px;
+  background: radial-gradient(circle, rgba(218,166,58,.20), transparent 60%);
+  pointer-events: none;
+}
+
+@media (max-width: 960px) {
+  .command-grid,
+  .profile-layout,
+  .rankings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .command-kpi-grid,
+  .mission-grid,
+  .event-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-command-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 620px) {
+  .command-kpi-grid,
+  .mission-grid,
+  .event-grid,
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+}

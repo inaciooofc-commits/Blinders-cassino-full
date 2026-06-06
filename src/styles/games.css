@@ -1,0 +1,724 @@
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  gap: 16px;
+}
+
+.game-card {
+  position: relative;
+  min-height: 310px;
+  border-radius: 32px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(226,184,92,.20);
+  box-shadow: var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.82)),
+    var(--card-bg) center / cover no-repeat;
+}
+
+.game-card-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 19px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.16);
+  font-size: 2rem;
+}
+
+.game-card h2 { margin: 10px 0 4px; }
+.game-card p { color: var(--muted); }
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0 12px;
+}
+
+.tags span {
+  font-size: .78rem;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #ffe8a8;
+}
+
+.game-layout {
+  width: min(1240px, calc(100% - 22px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, .55fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.game-stage-card {
+  position: relative;
+  min-height: 590px;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1px solid rgba(226,184,92,.22);
+  background: radial-gradient(circle at 50% 8%, rgba(226,184,92,.12), transparent 36%), rgba(8,8,14,.82);
+  box-shadow: var(--shadow);
+}
+
+.pixi-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.pixi-wrap canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dom-layer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  pointer-events: none;
+}
+
+.game-hud {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 8;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.game-hud span {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.30);
+  border: 1px solid rgba(255,255,255,.14);
+  color: #ffe8a8;
+  backdrop-filter: blur(8px);
+  font-weight: 900;
+}
+
+.game-overlay {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10;
+  display: none;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(10,10,18,.80);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(12px);
+}
+
+.game-overlay.show { display: block; }
+.game-overlay.good { border-color: rgba(120,230,161,.45); }
+.game-overlay.bad { border-color: rgba(255,140,154,.45); }
+
+.game-side {
+  display: grid;
+  gap: 14px;
+}
+
+.panel {
+  display: grid;
+  gap: 10px;
+}
+
+.status-box {
+  min-height: 86px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: 12px;
+  color: var(--muted);
+}
+
+/* DOM game visuals */
+.roulette-wheel {
+  position: relative;
+  width: min(340px, 75vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#8a1f2d 0 10deg, #111 10deg 20deg, #e2b85c 20deg 30deg, #111 30deg 40deg, #8a1f2d 40deg 50deg, #111 50deg 60deg, #e2b85c 60deg 70deg, #111 70deg 80deg, #8a1f2d 80deg 90deg, #111 90deg 100deg, #e2b85c 100deg 110deg, #111 110deg 120deg, #8a1f2d 120deg 130deg, #111 130deg 140deg, #e2b85c 140deg 150deg, #111 150deg 160deg, #8a1f2d 160deg 170deg, #111 170deg 180deg, #e2b85c 180deg 190deg, #111 190deg 200deg, #8a1f2d 200deg 210deg, #111 210deg 220deg, #e2b85c 220deg 230deg, #111 230deg 240deg, #8a1f2d 240deg 250deg, #111 250deg 260deg, #e2b85c 260deg 270deg, #111 270deg 280deg, #8a1f2d 280deg 290deg, #111 290deg 300deg, #e2b85c 300deg 310deg, #111 310deg 320deg, #8a1f2d 320deg 330deg, #111 330deg 340deg, #e2b85c 340deg 350deg, #111 350deg 360deg);
+  border: 12px solid rgba(226,184,92,.62);
+  box-shadow: inset 0 0 42px rgba(0,0,0,.62), 0 20px 52px rgba(0,0,0,.48);
+}
+
+.roulette-wheel span {
+  width: 104px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #050509;
+  color: #ffe8a8;
+  border: 2px solid rgba(255,255,255,.22);
+  font-size: 2rem;
+  font-weight: 1000;
+}
+
+.roulette-wheel i {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  top: 18px;
+  box-shadow: 0 0 16px rgba(255,255,255,.9);
+}
+
+.slot-machine, .dice-row, .hand {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.slot-machine div {
+  width: 104px;
+  height: 140px;
+  border-radius: 22px;
+  border: 1px solid rgba(226,184,92,.28);
+  background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(0,0,0,.46));
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+}
+
+.slot-machine div.pulse { animation: slotPulse .22s ease infinite; }
+@keyframes slotPulse { from { transform: translateY(-18px); filter: blur(2px); } to { transform: none; filter: none; } }
+
+.blackjack-table {
+  display: grid;
+  gap: 14px;
+  text-align: center;
+}
+
+.playing-card {
+  width: 82px;
+  height: 118px;
+  border-radius: 14px;
+  background: #f8f4e9;
+  color: #111;
+  border: 2px solid rgba(226,184,92,.9);
+  display: grid;
+  place-items: center;
+  font-size: 1.45rem;
+  font-weight: 1000;
+  box-shadow: 0 16px 32px rgba(0,0,0,.45);
+  animation: deal .42s var(--ease) both;
+}
+
+.playing-card.red { color: #a10d24; }
+@keyframes deal { from { opacity: 0; transform: translate3d(80px,-90px,0) rotateY(85deg); } to { opacity: 1; transform: none; } }
+
+.dice-row div {
+  width: 98px;
+  height: 98px;
+  border-radius: 22px;
+  background: linear-gradient(180deg,#fff,#d9d9d9);
+  color: #111;
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+  font-weight: 1000;
+}
+
+.dice-row div.roll { animation: dieRoll .45s ease infinite; }
+@keyframes dieRoll { 50% { transform: rotate(260deg) scale(1.16); } }
+
+.bingo-grid, .memory-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(42px, 70px));
+  gap: 9px;
+}
+
+.bingo-grid div, .memory-grid div {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.13);
+  font-weight: 1000;
+}
+
+.bingo-grid .hit, .memory-grid .hit {
+  background: linear-gradient(135deg, var(--red), var(--gold));
+}
+
+.coin {
+  width: 190px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 5.5rem;
+  background: radial-gradient(circle at 35% 25%, #ffefa8, #e2b85c 56%, #7d4e11);
+  box-shadow: 0 20px 58px rgba(0,0,0,.48);
+  transform-style: preserve-3d;
+}
+
+.scratch-wrap {
+  width: min(470px, 100%);
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(226,184,92,.28);
+  background: linear-gradient(135deg,#2a1420,#e2b85c);
+}
+
+.prize {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 1000;
+}
+
+.scratch-wrap canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  pointer-events: auto;
+}
+
+.memory-grid div {
+  transition: transform .32s var(--ease), background .32s var(--ease);
+}
+
+.memory-grid div.flipped {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 900px) {
+  .game-layout { grid-template-columns: 1fr; }
+  .game-stage-card { min-height: 500px; }
+}
+
+@media (max-width: 680px) {
+  .game-stage-card { min-height: 430px; border-radius: 26px; }
+  .slot-machine div { width: 78px; height: 104px; font-size: 2.6rem; }
+  .dice-row div { width: 74px; height: 74px; }
+  .playing-card { width: 60px; height: 88px; font-size: 1rem; }
+}
+
+
+/* Correção aba jogos e nova cara visual */
+.fixed-game-buttons .game-card { min-height: 330px; }
+.game-card { border-color: rgba(255,255,255,.16); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.86)), var(--card-bg) center / cover no-repeat; transition: transform .28s var(--ease), border-color .28s var(--ease), filter .28s var(--ease); }
+.game-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,.35); filter: brightness(1.06); }
+.game-card-icon { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); overflow: hidden; }
+.game-card-icon img { width: 100%; height: 100%; object-fit: cover; }
+.game-play-button { min-height: 50px; border-radius: 17px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 9px; padding: 10px 12px; background: linear-gradient(135deg, rgba(10,10,12,.96), rgba(54,54,60,.92)); border: 1px solid rgba(255,255,255,.18); color: #fff; text-decoration: none; box-shadow: 0 16px 34px rgba(0,0,0,.35); }
+.game-play-button span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 11px; background: rgba(255,255,255,.10); }
+.game-play-button b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pixi-wrap canvas { animation: canvasEnter .55s var(--ease) both; }
+@keyframes canvasEnter { from { opacity: 0; transform: scale(.985); filter: blur(3px); } to { opacity: 1; transform: scale(1); filter: none; } }
+.playing-card { background: linear-gradient(180deg, #ffffff, #d8d8d8); border-color: rgba(255,255,255,.92); }
+.playing-card.red { color: #3b3b3f; }
+
+
+/* V3 Bingo 100 números e performance */
+.bingo-picker-box {
+  display: grid;
+  gap: 9px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.bingo-picker-box h3,
+.bingo-picker-box p {
+  margin: 0;
+}
+
+.bingo-selected {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.22);
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.bingo-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  max-height: 230px;
+  overflow: auto;
+  padding-right: 3px;
+}
+
+.bingo-picker-grid button {
+  min-height: 30px !important;
+  padding: 0 !important;
+  border-radius: 9px !important;
+  font-size: .78rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #f5f5f5;
+}
+
+.bingo-picker-grid button.selected {
+  background: #f5f5f5;
+  color: #050506;
+}
+
+.bingo-grid-100 {
+  grid-template-columns: repeat(10, minmax(26px, 48px)) !important;
+  gap: 5px !important;
+}
+
+.bingo-grid-100 div {
+  border-radius: 10px !important;
+  font-size: .78rem;
+}
+
+.bingo-grid div.chosen {
+  border-color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.16);
+}
+
+.bingo-grid div.drawn {
+  background: rgba(255,255,255,.09);
+  color: #b8b8be;
+}
+
+.low-performance .hero::after,
+.low-performance .game-card::after,
+.low-performance .ticker-track {
+  animation: none !important;
+}
+
+.low-performance .game-card,
+.low-performance .category-card,
+.low-performance .panel,
+.low-performance .chart-card,
+.low-performance .auth-card {
+  backdrop-filter: none !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.35) !important;
+}
+
+.low-performance .bingo-picker-grid {
+  max-height: 180px;
+}
+
+@media (max-width: 680px) {
+  .bingo-picker-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .bingo-grid-100 {
+    grid-template-columns: repeat(10, minmax(22px, 1fr)) !important;
+  }
+  .bingo-grid-100 div {
+    font-size: .68rem;
+  }
+}
+
+
+/* V8 Blackjack e Memória interativos */
+.interactive-blackjack {
+  width: min(720px, 100%);
+  gap: 22px;
+}
+
+.interactive-blackjack section {
+  display: grid;
+  gap: 10px;
+}
+
+.interactive-blackjack h2 {
+  margin: 0;
+}
+
+.interactive-blackjack h2 small {
+  display: inline-grid;
+  min-width: 42px;
+  min-height: 30px;
+  place-items: center;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  color: #fff;
+}
+
+.blackjack-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  pointer-events: auto;
+  flex-wrap: wrap;
+}
+
+.blackjack-actions button.disabled,
+.blackjack-actions button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.card-back {
+  background: linear-gradient(135deg,#111,#555) !important;
+  color: #fff !important;
+}
+
+.memory-scene {
+  width: min(620px, 100%);
+  display: grid;
+  gap: 14px;
+}
+
+.memory-hud {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.memory-hud span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.30);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.memory-pairs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(62px, 1fr));
+  gap: 10px;
+}
+
+.memory-tile {
+  position: relative;
+  min-height: 88px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .32s var(--ease), border-color .32s var(--ease), background .32s var(--ease);
+  pointer-events: auto;
+}
+
+.memory-tile .front,
+.memory-tile .back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+}
+
+.memory-tile .back {
+  transform: rotateY(180deg);
+}
+
+.memory-tile.revealed,
+.memory-tile.matched {
+  transform: rotateY(180deg);
+  border-color: rgba(255,255,255,.45);
+}
+
+.memory-tile.matched {
+  background: rgba(255,255,255,.18);
+}
+
+.youtube-radio-dock {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1800;
+  width: min(360px, calc(100vw - 28px));
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(16,16,18,.94);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 18px 48px rgba(0,0,0,.48);
+}
+
+.youtube-radio-toggle {
+  width: 100%;
+  border-radius: 0 !important;
+  background: linear-gradient(135deg,#101012,#34343a) !important;
+  color: #fff !important;
+}
+
+.youtube-radio-panel {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.youtube-radio-dock.collapsed .youtube-radio-panel {
+  display: none;
+}
+
+.youtube-radio-panel small {
+  display: block;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.youtube-radio-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.youtube-player-host iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 16px;
+  background: #000;
+}
+
+@media (max-width: 680px) {
+  .memory-pairs-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+  }
+  .memory-tile {
+    min-height: 66px;
+    font-size: 1.45rem;
+  }
+}
+
+
+/* V9 Telefone, Blackjack e Bingo */
+input[data-phone-mask] {
+  letter-spacing: .04em;
+}
+
+.bingo-last-ball {
+  width: 86px;
+  height: 86px;
+  margin: 4px auto 0;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 25%, #fff, #bdbdc4 42%, #17171a 100%);
+  color: #050506;
+  font-size: 2rem;
+  font-weight: 1000;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45);
+  border: 2px solid rgba(255,255,255,.45);
+}
+
+.bingo-last-ball.pop {
+  animation: bingoBallPop .32s var(--ease);
+}
+
+.bingo-progress {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.30);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--muted);
+}
+
+@keyframes bingoBallPop {
+  0% { transform: scale(.55) rotate(-10deg); opacity: .35; }
+  65% { transform: scale(1.1) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.interactive-blackjack .playing-card {
+  transition: transform .22s var(--ease), filter .22s var(--ease);
+}
+
+.interactive-blackjack .playing-card:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+}
+
+
+/* V11 Pixi Engine */
+.pixi-engine-stage {
+  isolation: isolate;
+}
+
+.pixi-badge {
+  background: rgba(120,230,161,.16) !important;
+  border-color: rgba(120,230,161,.42) !important;
+  color: #b8ffd3 !important;
+}
+
+.pixi-wrap {
+  z-index: 1;
+}
+
+.pixi-wrap canvas {
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.dom-layer {
+  z-index: 2;
+}
+
+.game-overlay,
+.game-hud {
+  z-index: 5;
+}
+
+.pixi-slot-note {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.roulette-result,
+.dice-total,
+.coin-result {
+  position: absolute;
+  left: 50%;
+  bottom: 56px;
+  transform: translateX(-50%);
+  min-width: min(360px, 80vw);
+  padding: 12px 16px;
+  border-radius: 18px;
+  text-align: center;
+  background: rgba(0,0,0,.62);
+  border: 1px solid rgba(217,166,58,.35);
+  color: #f7e2a8;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.blackjack-table.interactive-blackjack {
+  background: rgba(0,0,0,.30) !important;
+  backdrop-filter: blur(2px);
+}
+
+.low-performance .pixi-wrap canvas {
+  filter: none;
+}

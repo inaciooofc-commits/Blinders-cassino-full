@@ -1,0 +1,76 @@
+/* V12 Performance — mantém o visual premium, reduzindo lag */
+html.perf-low * {
+  scroll-behavior: auto !important;
+}
+
+html.perf-low .app-shell.png-skin {
+  background-attachment: scroll !important;
+}
+
+html.perf-low .steam-track {
+  animation-duration: 58s !important;
+}
+
+html.perf-ultra-low .steam-track,
+html.tab-hidden .steam-track {
+  animation-play-state: paused !important;
+}
+
+html.perf-low .panel,
+html.perf-low .category-card,
+html.perf-low .admin-form-card,
+html.perf-low .admin-help-card,
+html.perf-low .game-stage,
+html.perf-low .game-stage-card,
+html.perf-low .auth-card {
+  backdrop-filter: none !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.46) !important;
+}
+
+html.perf-low .png-game-card::after,
+html.perf-low .hero::after {
+  animation: none !important;
+}
+
+html.perf-low .pixi-wrap canvas {
+  image-rendering: auto;
+  filter: none !important;
+}
+
+html.perf-ultra-low .server-ticker {
+  position: sticky !important;
+}
+
+html.tab-hidden .ticker-track {
+  transform: translate3d(0,0,0) !important;
+}
+
+img,
+.png-game-card,
+.steam-card {
+  content-visibility: auto;
+}
+
+.bingo-grid-100 div {
+  contain: layout paint;
+}
+
+.memory-tile,
+.playing-card,
+.bingo-last-ball {
+  will-change: transform;
+}
+
+@media (max-width: 680px) {
+  .steam-card {
+    height: 164px !important;
+  }
+
+  .png-game-card {
+    min-height: 168px !important;
+  }
+
+  .hero {
+    min-height: 158px !important;
+  }
+}

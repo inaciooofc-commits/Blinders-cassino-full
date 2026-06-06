@@ -1,0 +1,208 @@
+/* V10 PNG Skin — corrige tela lavada/branca do PDF e aplica PNGs no site todo */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  background: #050506 !important;
+  color: #f3f0e8 !important;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(202,157,58,.13), transparent 35%),
+    #050506 !important;
+}
+
+.app-shell.png-skin {
+  min-height: 100vh;
+  color: #f3f0e8;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.92)),
+    var(--page-bg) center/cover fixed no-repeat !important;
+}
+
+.topbar,
+.hero,
+.panel,
+.category-card,
+.admin-form-card,
+.admin-help-card,
+.feature-card,
+.chat-card,
+.shop-item,
+.chart-card,
+.auth-card,
+.game-side .panel,
+.game-stage,
+.game-main,
+.contact-footer {
+  background:
+    linear-gradient(180deg, rgba(22,22,24,.92), rgba(7,7,8,.90)) !important;
+  border: 1px solid rgba(218,166,58,.34) !important;
+  box-shadow: 0 22px 70px rgba(0,0,0,.58), inset 0 0 0 1px rgba(255,255,255,.04) !important;
+  color: #f3f0e8 !important;
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.70), rgba(0,0,0,.28), rgba(0,0,0,.70)),
+    url('/assets/png/backgrounds/main-lobby-wide.png') center/cover no-repeat !important;
+  min-height: 230px;
+  display: grid;
+  align-content: center;
+}
+
+.hero h1,
+.category-card h2,
+.panel h2,
+.panel h3,
+.admin-form-card h3,
+.admin-help-card h3,
+.steam-showcase h2 {
+  color: #f7e2a8 !important;
+  text-shadow: 0 3px 18px rgba(0,0,0,.75);
+  letter-spacing: .05em;
+}
+
+.topbar .brand img,
+.png-nav-icon {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(218,166,58,.32);
+}
+
+.topbar a,
+.topbar button,
+.list-card {
+  color: #f3f0e8 !important;
+}
+
+button,
+.primary,
+.ghost,
+input,
+select,
+textarea {
+  background: rgba(10,10,12,.82) !important;
+  color: #f3f0e8 !important;
+  border: 1px solid rgba(218,166,58,.34) !important;
+}
+
+.primary {
+  background:
+    linear-gradient(135deg, rgba(220,169,59,.95), rgba(64,43,12,.95)) !important;
+  color: #070707 !important;
+  font-weight: 900 !important;
+}
+
+.ghost:hover,
+button:hover,
+.primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.steam-showcase.png-showcase {
+  background:
+    linear-gradient(180deg, rgba(9,9,10,.82), rgba(0,0,0,.88)),
+    url('/assets/png/backgrounds/lobby-panel.png') center/cover no-repeat !important;
+}
+
+.steam-card.png-card {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.86)),
+    var(--steam-bg) center/cover no-repeat !important;
+  border-color: rgba(218,166,58,.55) !important;
+}
+
+.png-game-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 236px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.84)),
+    var(--game-img) center/cover no-repeat !important;
+  border: 1px solid rgba(218,166,58,.52) !important;
+}
+
+.png-game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgba(0,0,0,.86) 100%);
+  pointer-events: none;
+}
+
+.png-game-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.png-game-stage,
+.game-stage {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.86)),
+    var(--game-table, url('/assets/png/backgrounds/games-panel.png')) center/cover no-repeat !important;
+}
+
+.blackjack-table.png-table,
+.bingo-scene,
+.memory-scene,
+.roulette-scene,
+.dice-scene,
+.slot-machine {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.72)),
+    url('/assets/png/backgrounds/games-panel.png') center/cover no-repeat !important;
+  border: 1px solid rgba(218,166,58,.36);
+  border-radius: 28px;
+  padding: 22px;
+  color: #f3f0e8;
+}
+
+.playing-card {
+  background: linear-gradient(180deg, #fffef7, #d8d2c3) !important;
+  color: #1a1713 !important;
+  border: 1px solid rgba(218,166,58,.55) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.42) !important;
+}
+
+.playing-card.red {
+  color: #8a1010 !important;
+}
+
+.card-back {
+  background:
+    linear-gradient(135deg, rgba(30,28,22,.98), rgba(7,7,8,.98)),
+    url('/assets/png/icons/blackjack.png') center/cover no-repeat !important;
+  color: transparent !important;
+}
+
+.server-ticker {
+  background: rgba(0,0,0,.92) !important;
+  border-bottom: 1px solid rgba(218,166,58,.35) !important;
+}
+
+.bingo-last-ball {
+  background: radial-gradient(circle at 35% 25%, #fff, #d8b45d 42%, #17110a 100%) !important;
+  border-color: rgba(218,166,58,.8) !important;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 190px;
+  }
+  .png-game-card {
+    min-height: 190px;
+  }
+  .topbar .brand img {
+    width: 42px;
+    height: 42px;
+  }
+}
