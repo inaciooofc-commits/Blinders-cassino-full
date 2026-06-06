@@ -1,0 +1,10 @@
+LOTE 01 DE 03
+
+Extraia este ZIP.
+Suba os arquivos/pastas extraídos para o MESMO repositório do GitHub.
+Depois suba o próximo lote.
+
+Não suba uma pasta chamada blinders-github-lote.
+Suba o conteúdo de dentro dela, mantendo as pastas src, public, database etc.
+
+Arquivos neste lote: 85

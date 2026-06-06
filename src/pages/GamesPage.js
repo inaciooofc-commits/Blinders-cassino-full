@@ -1,0 +1,5 @@
+import { PNG } from '../core/PngAssets.js';
+import { shell, bindShellActions } from '../core/UI.js';
+import { gameMeta } from '../games/GameRegistry.js';
+export function GamesPage() {const iconFile={crash:'crash',roulette:'roulette',slots:'slots',blackjack:'blackjack',dice:'dice',bingo:'bingo',coin:'coin',scratch:'scratch',memory:'memory'};return shell(`<section class="game-grid fixed-game-buttons">${Object.entries(gameMeta).map(([key,game])=>`<article class="game-card png-game-card" style="--card-bg:url('/assets/backgrounds/${game.bg}.svg')"><div class="game-card-icon"><img src="/assets/icons/actions/${iconFile[key]||'play'}.svg" alt="${game.name}"></div><h2>${game.name}</h2><p>${game.desc}</p><div class="tags"><span>PixiJS</span><span>GSAP</span><span>IRIS</span></div><a class="game-play-button" href="/game?game=${key}"><span>▶</span><b>Jogar ${game.name}</b></a></article>`).join('')}</section>`,{title:'Jogos Reais',subtitle:'Aba de jogos corrigida: botões proporcionais, ícones próprios e animações mais suaves.',bg:'crash'});}
+export function bindGamesPage(){bindShellActions();}
