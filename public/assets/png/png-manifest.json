@@ -1,0 +1,56 @@
+{
+  "icons": [
+    "/assets/png/icons/home.png",
+    "/assets/png/icons/menu.png",
+    "/assets/png/icons/profile.png",
+    "/assets/png/icons/avatar.png",
+    "/assets/png/icons/chat.png",
+    "/assets/png/icons/shop.png",
+    "/assets/png/icons/cart.png",
+    "/assets/png/icons/wallet.png",
+    "/assets/png/icons/iris-bank.png",
+    "/assets/png/icons/roulette.png",
+    "/assets/png/icons/blackjack.png",
+    "/assets/png/icons/bingo.png",
+    "/assets/png/icons/dice.png",
+    "/assets/png/icons/slots.png",
+    "/assets/png/icons/ranking.png",
+    "/assets/png/icons/notifications.png",
+    "/assets/png/icons/settings.png",
+    "/assets/png/icons/support.png",
+    "/assets/png/icons/login.png",
+    "/assets/png/icons/register.png",
+    "/assets/png/icons/vip.png",
+    "/assets/png/icons/announcements.png",
+    "/assets/png/icons/radio-music.png",
+    "/assets/png/icons/friends.png"
+  ],
+  "games": [
+    "/assets/png/games/roulette.png",
+    "/assets/png/games/blackjack.png",
+    "/assets/png/games/bingo.png",
+    "/assets/png/games/dice.png",
+    "/assets/png/games/slots.png",
+    "/assets/png/games/memory.png",
+    "/assets/png/games/crash.png",
+    "/assets/png/games/poker.png"
+  ],
+  "showcase": [
+    "/assets/png/showcase/welcome.png",
+    "/assets/png/showcase/bonus.png",
+    "/assets/png/showcase/iris-bank.png",
+    "/assets/png/showcase/vip-club.png",
+    "/assets/png/showcase/shop-highlight.png",
+    "/assets/png/showcase/tournaments.png",
+    "/assets/png/showcase/global-chat.png",
+    "/assets/png/showcase/events.png"
+  ],
+  "backgrounds": [
+    "/assets/png/backgrounds/lobby-panel.png",
+    "/assets/png/backgrounds/games-panel.png",
+    "/assets/png/backgrounds/iris-panel.png",
+    "/assets/png/backgrounds/admin-panel.png",
+    "/assets/png/backgrounds/main-lobby-wide.png",
+    "/assets/png/backgrounds/admin-dashboard-wide.png"
+  ]
+}
