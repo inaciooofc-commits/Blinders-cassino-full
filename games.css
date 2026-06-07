@@ -1,1 +1,2 @@
 html,body,#app{min-height:100%;margin:0}*{box-sizing:border-box}body{font-family:Inter,system-ui,Arial,sans-serif}a{color:inherit}button,input,select,textarea{font:inherit}
+button,.primary{cursor:pointer}

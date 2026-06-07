@@ -1,0 +1,21 @@
+{
+  "name": "blinders-cassino",
+  "version": "14.2.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/create-spa-fallback.cjs",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "@supabase/supabase-js": "latest",
+    "pixi.js": "^8.6.0",
+    "gsap": "^3.12.5",
+    "chart.js": "latest",
+    "howler": "latest"
+  },
+  "devDependencies": {}
+}

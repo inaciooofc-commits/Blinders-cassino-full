@@ -1,1 +1,1 @@
-.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px}.game-stage-card{min-height:560px;border-radius:18px;position:relative;overflow:hidden}.pixi-wrap{min-height:470px}.dom-layer{position:absolute;inset:0}.game-side{display:grid;gap:14px}@media(max-width:900px){.game-layout{grid-template-columns:1fr}}
+.v14-error-page{min-height:100vh;display:grid;place-items:center;padding:24px;background:#03060e;color:#f7f0df}.v14-error-card{width:min(680px,100%);padding:24px}.v14-error-actions{display:flex;gap:10px;flex-wrap:wrap}
