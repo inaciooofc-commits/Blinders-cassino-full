@@ -1,0 +1,25 @@
+BLINDERS V14.6 — CONECTAR AO SQL
+
+1. Supabase SQL Editor:
+   Cole e rode BLINDERS_V14_6_SQL_CONNECT.sql
+   Resultado esperado:
+   BLINDERS_V14_6_SQL_CONNECT_OK
+
+2. GitHub:
+   Extraia o ZIP e suba o conteúdo na raiz do repositório.
+   Substitua:
+   - src/main.js
+   - src/core/Router.js
+   Adicione:
+   - src/api/supabaseClient.js
+   - src/api/irisSql.js
+   - src/styles/v14-function-restore.css
+
+3. Cloudflare:
+   O patch já contém fallback com a anon key, mas pode adicionar:
+   VITE_SUPABASE_URL=https://lbmmqfgcyimijaqnvvpx.supabase.co
+   VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxibW1xZmdjeWltaWphcW52dnB4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0MTY1NjQsImV4cCI6MjA5NTk5MjU2NH0._pQTy5TJ-MZ9Ep2dpD4XbLQGqLRkhzsjQCqDseJ9Cto
+
+4. Deploy novamente.
+
+Não coloque service_role no frontend.
