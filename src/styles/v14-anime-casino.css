@@ -1,0 +1,114 @@
+/* Blinders V14 — arquivo obrigatório para o build */
+:root {
+  --v14-bg: #03060e;
+  --v14-gold: #d9b05f;
+  --v14-purple: #7d38ff;
+  --v14-text: #f7f0df;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+  background: var(--v14-bg);
+  color: var(--v14-text);
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.v14-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 256px minmax(0, 1fr);
+  background:
+    radial-gradient(circle at 60% 5%, rgba(83, 46, 180, .20), transparent 28%),
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.88)),
+    var(--page-bg) center/cover fixed no-repeat;
+}
+
+.v14-sidebar {
+  padding: 18px 14px;
+  background: linear-gradient(180deg, rgba(4,8,18,.96), rgba(3,4,10,.94));
+  border-right: 1px solid rgba(217,176,95,.34);
+}
+
+.v14-main {
+  min-width: 0;
+  padding: 0 18px 24px;
+}
+
+.v14-hero {
+  min-height: 300px;
+  margin: 14px 0 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.14), rgba(0,0,0,.78)),
+    var(--page-bg) center/cover no-repeat;
+}
+
+.v14-hero h1 {
+  color: var(--v14-gold);
+  letter-spacing: .18em;
+}
+
+.v14-nav {
+  display: grid;
+  gap: 7px;
+}
+
+.v14-nav a {
+  min-height: 44px;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  color: #dbe3ff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(255,255,255,.025);
+}
+
+.v14-nav img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.games-showcase-v14,
+.bank-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.game-card-v14,
+.bank-card,
+.v14-game-tile {
+  border: 1px solid rgba(217,176,95,.34);
+  background: linear-gradient(180deg, rgba(5,9,20,.88), rgba(2,4,10,.92));
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .v14-shell,
+  .games-showcase-v14,
+  .bank-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .v14-main {
+    padding: 0 10px 16px;
+  }
+}
