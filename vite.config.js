@@ -1,1 +1,1 @@
-/* animations stable fallback */
+/* admin stable fallback */

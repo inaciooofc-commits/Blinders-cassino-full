@@ -1,1 +1,1 @@
-/* games stable fallback */
+.v14-error-page{min-height:100vh;display:grid;place-items:center;padding:24px;background:#03060e;color:#f7f0df}.v14-error-card{width:min(680px,100%);padding:24px}.v14-error-actions{display:flex;gap:10px;flex-wrap:wrap}
