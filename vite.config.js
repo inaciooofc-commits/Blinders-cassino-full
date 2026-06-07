@@ -1,1 +1,12 @@
-/* admin stable fallback */
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [],
+  appType: 'spa',
+  build: {
+    target: 'es2020',
+    sourcemap: false,
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1600
+  }
+});
