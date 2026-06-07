@@ -18,12 +18,14 @@ import { MissionsPage, bindMissionsPage } from '../pages/missions/MissionsPage.j
 import { RankingsPage, bindRankingsPage } from '../pages/rankings/RankingsPage.js';
 import { ProfilePage, bindProfilePage } from '../pages/profile/ProfilePage.js';
 import { CommandCenterPage, bindCommandCenterPage } from '../pages/admin/CommandCenterPage.js';
+import { BankPage, bindBankPage } from '../pages/bank/BankPage.js';
 
 export function route() {
   const path = normalize(location.pathname);
   if (path === '/login') return render(LoginPage, bindLoginPage);
   if (path === '/register') return render(RegisterPage, bindRegisterPage);
   if (path === '/games') return render(GamesPage, bindGamesPage);
+  if (path === '/bank') return render(BankPage, bindBankPage);
   if (path === '/game') return render(GamePage, bindGamePage);
   if (path === '/graphics') return render(GraphicsPage, bindGraphicsPage);
   if (path === '/bonus') return render(BonusPage, bindBonusPage);
@@ -47,11 +49,52 @@ function normalize(path) {
 }
 
 function render(page, bind) {
-  Performance.cleanup();
-  Performance.detect();
-  document.getElementById('app').innerHTML = page();
-  bind?.();
-  interceptLinks();
+  try {
+    Performance.cleanup();
+    Performance.detect();
+
+    const app = document.getElementById('app');
+    if (!app) throw new Error('Elemento #app não encontrado.');
+
+    const html = page();
+    app.innerHTML = html || '<main class="v14-error-page"><section class="v14-error-card"><h1>Rota vazia</h1><p>A página não retornou conteúdo.</p></section></main>';
+
+    try {
+      bind?.();
+    } catch (bindError) {
+      console.error('Erro ao iniciar página:', bindError);
+      const warn = document.createElement('div');
+      warn.className = 'v14-route-warning';
+      warn.innerHTML = `<b>Aviso:</b> ${escapeHtml(bindError.message || bindError)}`;
+      app.prepend(warn);
+    }
+
+    interceptLinks();
+  } catch (error) {
+    console.error('Erro de rota:', error);
+    const app = document.getElementById('app') || document.body;
+    app.innerHTML = `
+      <main class="v14-error-page">
+        <section class="v14-error-card">
+          <h1>Erro ao renderizar página</h1>
+          <p>${escapeHtml(error.message || error)}</p>
+          <div class="v14-error-actions">
+            <button onclick="location.href='/'">Voltar ao início</button>
+            <button onclick="location.reload()">Recarregar</button>
+          </div>
+        </section>
+      </main>`;
+  }
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[c]));
 }
 
 function interceptLinks() {

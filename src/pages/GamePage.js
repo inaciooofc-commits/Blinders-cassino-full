@@ -9,7 +9,7 @@ export function GamePage() {
   const key = params.get('game') || 'crash';
   const meta = gameMeta[key] || gameMeta.crash;
   return shell(`<div id="gameMount"></div>`, {
-    title: `${meta.icon} ${meta.name}`,
+    title: `${meta.name}`,
     subtitle: meta.desc,
     bg: meta.bg
   });

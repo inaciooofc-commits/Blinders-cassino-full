@@ -7,17 +7,12 @@ export default defineConfig({
     target: 'es2020',
     sourcemap: false,
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 1200,
+    chunkSizeWarningLimit: 1400,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: [
-            'pixi.js',
-            'gsap',
-            'chart.js',
-            'howler',
-            '@supabase/supabase-js'
-          ]
+          pixi: ['pixi.js'],
+          vendor: ['gsap', 'chart.js', 'howler', '@supabase/supabase-js']
         }
       }
     }
