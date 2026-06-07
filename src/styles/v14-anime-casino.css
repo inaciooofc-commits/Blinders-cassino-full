@@ -1,3 +1,118 @@
-/* fallback visual CSS if V14.4 was not uploaded */
-html,body,#app{background:#02050b;color:#efe7d3}.v14-shell{min-height:100vh;display:grid;grid-template-columns:244px 1fr;background:#03060b}.v14-sidebar{padding:12px;background:#040914}.v14-nav{display:grid;gap:6px}.v14-nav a{padding:9px;color:#efe7d3;text-decoration:none;border:1px solid rgba(214,174,82,.25)}.v14-main{padding:12px}.v14-hero{min-height:260px;display:grid;place-items:center;text-align:center;background:linear-gradient(135deg,#050916,#1a0d3b);border:1px solid rgba(214,174,82,.35)}.v14-dashboard,.bank-layout,.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:12px}.v14-game-row,.games-showcase-v14{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.v14-game-tile,.game-card-v14,.bank-card,.panel,.category-card{padding:14px;border:1px solid rgba(214,174,82,.35);background:#080d19;color:#efe7d3}.game-layout{display:grid;grid-template-columns:1fr 330px;gap:12px}.game-stage-card{min-height:520px;padding:14px;background:#060b16}.primary{background:#6a2ce8;color:white;border:0;padding:10px 14px}
-@media(max-width:880px){.v14-shell,.v14-dashboard,.bank-layout,.admin-grid,.game-layout,.games-showcase-v14,.v14-game-row{grid-template-columns:1fr}}
+:root{
+  --bg:#03060b;
+  --panel:rgba(4,8,16,.88);
+  --panel2:rgba(7,12,24,.92);
+  --line:rgba(204,159,68,.48);
+  --line2:rgba(125,56,255,.70);
+  --gold:#d7ad55;
+  --gold2:#f3d58a;
+  --purple:#7d38ff;
+  --purple2:#b37bff;
+  --blue:#149bff;
+  --text:#efe7d3;
+  --muted:#a6acbb;
+  --green:#67ff92;
+}
+
+.v14-shell{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:260px minmax(0,1fr);
+  background:
+    radial-gradient(circle at 78% 8%,rgba(116,58,255,.26),transparent 24%),
+    linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.88)),
+    url('/assets/v14/bg/lobby.png') center top/cover fixed no-repeat;
+}
+
+.v14-sidebar{
+  position:sticky;top:0;height:100vh;overflow:auto;
+  padding:12px 10px;
+  background:linear-gradient(180deg,rgba(3,8,16,.96),rgba(1,4,10,.98));
+  border-right:1px solid rgba(214,174,82,.42);
+  box-shadow:18px 0 44px rgba(0,0,0,.70);
+  z-index:10;
+}
+
+.v14-brand{
+  min-height:140px;display:grid;place-items:center;align-content:center;gap:6px;
+  color:var(--gold2);text-decoration:none;letter-spacing:.22em;text-align:center;
+  border:1px solid rgba(214,174,82,.24);border-radius:10px;
+  background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.44));margin-bottom:12px;
+}
+
+.brand-orb{
+  width:76px;height:76px;display:grid;place-items:center;color:transparent;
+  background:url('/assets/v14/icons/admin.png') center/cover no-repeat;
+  filter:drop-shadow(0 0 16px rgba(125,56,255,.88));
+}
+
+.v14-brand b{display:block;font-size:1.42rem;letter-spacing:.18em;text-shadow:0 0 14px rgba(214,174,82,.55)}
+.v14-brand small{display:block;font-size:.75rem;color:#d8c08a;letter-spacing:.38em}
+
+.nav-group-title{margin:14px 8px 6px;color:#8f95a8;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.v14-nav{display:grid;gap:5px;padding:2px 4px}
+.v14-nav a{
+  min-height:40px;display:grid;grid-template-columns:30px 1fr;align-items:center;gap:9px;
+  padding:6px 10px;border:1px solid rgba(255,255,255,.045);border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(255,255,255,.008));
+  color:#cbd2df;text-decoration:none;font-size:.92rem;
+}
+.v14-nav a:hover,.v14-nav a.active{
+  color:var(--gold2);border-color:rgba(139,69,255,.78);
+  background:linear-gradient(90deg,rgba(125,56,255,.48),rgba(6,10,20,.28));
+  box-shadow:inset 0 0 22px rgba(125,56,255,.28),0 0 16px rgba(125,56,255,.26);
+}
+.nav-dot{width:22px;height:22px;border-radius:6px;background:center/cover no-repeat;box-shadow:0 0 12px rgba(125,56,255,.5);border:1px solid rgba(242,211,128,.45)}
+.icon-home{background-image:url('/assets/v14/icons/home.png')}.icon-games{background-image:url('/assets/v14/icons/games.png')}.icon-ranking{background-image:url('/assets/v14/icons/ranking.png')}
+.icon-bank{background-image:url('/assets/v14/icons/bank.png')}.icon-deposit{background-image:url('/assets/v14/icons/deposit.png')}.icon-withdraw{background-image:url('/assets/v14/icons/withdraw.png')}
+.icon-transfer{background-image:url('/assets/v14/icons/transfer.png')}.icon-profile{background-image:url('/assets/v14/icons/profile.png')}.icon-missions{background-image:url('/assets/v14/icons/missions.png')}
+.icon-events{background-image:url('/assets/v14/icons/events.png')}.icon-shop{background-image:url('/assets/v14/icons/shop.png')}.icon-admin{background-image:url('/assets/v14/icons/admin.png')}
+
+.vip-box{margin:16px 6px 0;padding:14px;border:1px solid rgba(214,174,82,.28);border-radius:8px;color:#c9b2ff;background:linear-gradient(180deg,rgba(9,13,26,.92),rgba(2,6,14,.92));font-size:.78rem;line-height:1.5;display:grid;gap:3px}
+.vip-box b{color:var(--gold2)}.vip-box span{letter-spacing:.18em}
+
+.v14-main{min-width:0;padding:0 12px 18px}
+.v14-ticker{height:35px;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;padding:0 12px;color:var(--gold2);border-bottom:1px solid rgba(214,174,82,.34);background:rgba(3,5,12,.78);overflow:hidden}
+.v14-ticker b{color:#b886ff;font-size:.78rem;letter-spacing:.12em}
+.v14-ticker div{overflow:hidden;white-space:nowrap}.v14-ticker span{display:inline-block;animation:ann 28s linear infinite;font-size:.8rem;letter-spacing:.12em}
+@keyframes ann{from{transform:translateX(8%)}to{transform:translateX(-70%)}}
+
+.v14-topbar{min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.v14-search{flex:1;padding:10px 14px;border-radius:999px;color:#cfd6e8;background:rgba(0,0,0,.38);border:1px solid rgba(125,56,255,.35)}
+.v14-topbar nav{display:flex;gap:8px}.v14-topbar a,.v14-topbar button,.hamburger{padding:9px 12px;border-radius:8px;color:var(--gold2);border:1px solid rgba(214,174,82,.28);background:rgba(5,9,20,.72);text-decoration:none}
+.hamburger{display:none}
+
+.v14-hero{
+  min-height:360px;margin:0 0 14px;border:1px solid rgba(214,174,82,.50);border-radius:10px;overflow:hidden;display:grid;place-items:center;text-align:center;
+  background:linear-gradient(90deg,rgba(0,0,0,.58),rgba(0,0,0,.12),rgba(0,0,0,.62)),url('/assets/v14/bg/lobby.png') center/cover no-repeat;
+  box-shadow:0 22px 58px rgba(0,0,0,.56),inset 0 0 0 1px rgba(125,56,255,.36);
+}
+.v14-hero h1{font-size:clamp(2.8rem,5vw,5.8rem);line-height:.92;color:var(--gold2);letter-spacing:.20em;margin:12px 0;text-shadow:0 0 18px rgba(0,0,0,.95),0 0 22px rgba(214,174,82,.36)}
+.v14-hero p{color:#d6dae9;letter-spacing:.18em;font-size:.9rem;text-transform:uppercase}
+.project-signature{display:block;color:#d7c492;font-size:.78rem;letter-spacing:.26em;text-shadow:0 0 14px rgba(0,0,0,.8)}
+
+.v14-dashboard{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px}
+.v14-main-banner,.v14-side-rank,.v14-wallet-panel,.v14-shop-preview,.bank-card,.panel,.category-card,.game-card-v14,.v14-game-tile,.steam-showcase{
+  border:1px solid rgba(214,174,82,.42);border-radius:10px;background:linear-gradient(180deg,rgba(5,8,17,.84),rgba(2,4,10,.92));
+  box-shadow:0 18px 42px rgba(0,0,0,.50),inset 0 0 0 1px rgba(125,56,255,.18);overflow:hidden;
+}
+.v14-main-banner{min-height:260px;padding:28px;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.25)),url('/assets/v14/bg/games.png') center/cover no-repeat}
+.v14-main-banner h2{font-size:clamp(2.4rem,5vw,5rem);color:var(--gold2);letter-spacing:.18em}
+.v14-side-rank{padding:14px}.v14-side-rank h2{color:var(--gold2);letter-spacing:.12em;text-align:center}
+.v14-side-rank ol{display:grid;gap:8px;padding:0;list-style:none}.v14-side-rank li{display:flex;justify-content:space-between;padding:9px;background:rgba(0,0,0,.34);border:1px solid rgba(255,255,255,.05);border-radius:6px}
+
+.steam-showcase{grid-column:1/-1;min-height:150px;position:relative;overflow:hidden;background:rgba(0,0,0,.28)}
+.steam-track{display:flex;gap:12px;animation:steam 38s linear infinite;padding:12px}
+.steam-track img{width:210px;height:126px;object-fit:cover;border-radius:8px;border:1px solid rgba(214,174,82,.4)}
+@keyframes steam{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.v14-game-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px}
+.v14-game-tile{height:230px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;text-decoration:none;color:var(--gold2);padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/roulette.png') center/cover no-repeat}
+.tile-blackjack{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/blackjack.png')}.tile-bingo{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/bingo.png')}.tile-dice{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/dice.png')}
+.tile-slots{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/slots.png')}.tile-memory{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/memory.png')}.tile-crash{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/crash.png')}.tile-poker{background-image:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85)),url('/assets/v14/cards/poker.png')}
+.v14-game-tile span{font-size:1.16rem;font-weight:900;letter-spacing:.18em;text-shadow:0 0 14px #000}
+.v14-game-tile b,.primary,.primary-link,.v14-wallet-panel a,.v14-shop-preview a{min-height:32px;display:inline-grid;place-items:center;padding:8px 14px;border-radius:6px;text-decoration:none;color:#fff;border:1px solid rgba(203,116,255,.62);background:linear-gradient(90deg,rgba(125,56,255,.86),rgba(64,24,124,.72))}
+.v14-wallet-panel{padding:20px;background:linear-gradient(90deg,rgba(0,0,0,.64),rgba(0,0,0,.20)),url('/assets/v14/bg/bank.png') center/cover no-repeat}.v14-wallet-panel nav{display:flex;gap:8px;flex-wrap:wrap}
+.v14-shop-preview{padding:20px;background:linear-gradient(90deg,rgba(0,0,0,.54),rgba(0,0,0,.20)),url('/assets/v14/bg/games.png') center/cover no-repeat}
+
+.v14-signature{margin-top:14px;color:#a8afbf;display:grid;gap:4px;font-size:.76rem;letter-spacing:.09em}

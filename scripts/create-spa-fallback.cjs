@@ -12,10 +12,9 @@ if (!fs.existsSync(index)) {
 
 fs.copyFileSync(index, fallback);
 
-// Garante que nenhum _redirects antigo vá para o Cloudflare.
-for (const name of ['_redirects', '_headers']) {
-  const file = path.join(dist, name);
-  if (fs.existsSync(file)) fs.rmSync(file, { force: true });
+for (const file of ['_redirects', '_headers']) {
+  const p = path.join(dist, file);
+  if (fs.existsSync(p)) fs.rmSync(p, { force: true });
 }
 
-console.log('SPA fallback criado: dist/404.html');
+console.log('Cloudflare SPA fallback OK.');

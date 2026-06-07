@@ -1,1 +1,7 @@
-html,body,#app{min-height:100%;margin:0}*{box-sizing:border-box}body{font-family:Inter,system-ui,Arial,sans-serif}a{color:inherit}button,input,select,textarea{font:inherit}
+html,body,#app{min-height:100%;margin:0}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:#02050b;color:#efe7d3;overflow-x:hidden}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}

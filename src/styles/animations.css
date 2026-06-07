@@ -1,1 +1,10 @@
-/* animations fallback */
+.blinders-loading{position:fixed;inset:0;z-index:999999;display:grid;place-items:center;background:linear-gradient(135deg,#02050b,#12082d);transition:.25s}
+.blinders-loading.hide{opacity:0;pointer-events:none}
+.loading-card{width:min(520px,90vw);padding:28px;border-radius:18px;text-align:center;background:rgba(5,9,20,.92);border:1px solid rgba(214,174,82,.45);box-shadow:0 0 60px rgba(125,56,255,.35)}
+.loading-card b{display:block;font-size:2.4rem;color:#f3d58a;letter-spacing:.25em}
+.loading-card span{display:block;margin:14px 0;color:#cfd6e8}
+.loading-bar{height:12px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.10);border:1px solid rgba(214,174,82,.35)}
+.loading-bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#7d38ff,#149bff,#d7ad55);transition:.25s}
+.v14-game-tile,.game-card-v14,.category-card,.bank-card,.primary{transition:.2s}
+.v14-game-tile:hover,.game-card-v14:hover,.category-card:hover,.bank-card:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.primary:hover{filter:brightness(1.18)}

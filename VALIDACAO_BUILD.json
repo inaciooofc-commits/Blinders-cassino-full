@@ -1,0 +1,48 @@
+{
+  "syntax_errors": {},
+  "verify_imports": "BLINDERS VERIFY OK: 14 imports verificados.\n",
+  "files_count": 62,
+  "zip_size_mb": 0.76,
+  "largest_files": [
+    [
+      "public/assets/v14/bg/lobby.png",
+      0.101
+    ],
+    [
+      "public/assets/v14/bg/bank.png",
+      0.1
+    ],
+    [
+      "public/assets/v14/bg/admin.png",
+      0.099
+    ],
+    [
+      "public/assets/v14/bg/games.png",
+      0.096
+    ],
+    [
+      "public/assets/v14/tables/default-table.png",
+      0.083
+    ],
+    [
+      "public/assets/v14/ui/loading.png",
+      0.08
+    ],
+    [
+      "src/core/Router.js",
+      0.042
+    ],
+    [
+      "public/assets/v14/cards/roulette.png",
+      0.026
+    ],
+    [
+      "database/BLINDERS_FINAL_SQL.sql",
+      0.024
+    ],
+    [
+      "public/assets/v14/cards/crash.png",
+      0.019
+    ]
+  ]
+}
