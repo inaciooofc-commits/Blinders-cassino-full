@@ -1,0 +1,22 @@
+V14.4 REFERENCE LAYOUT — PATCH VISUAL SEGURO
+
+Este patch NÃO altera:
+- package.json
+- vite.config.js
+- src/main.js
+- src/core/Router.js
+
+Ele altera apenas:
+- src/styles/v14-anime-casino.css
+- public/assets/v14/
+
+Como aplicar:
+1. Extraia este ZIP.
+2. Suba o conteúdo extraído na raiz do GitHub.
+3. Substitua src/styles/v14-anime-casino.css.
+4. Suba a pasta public/assets/v14.
+5. Commit changes.
+6. Rode novo deploy.
+
+Não suba a pasta blinders-v14-4-reference-layout-css-assets como pasta dentro do repositório.
+Suba o conteúdo de dentro dela.
