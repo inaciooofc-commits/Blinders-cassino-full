@@ -1,114 +1,190 @@
-/* Blinders V14 — arquivo obrigatório para o build */
-:root {
-  --v14-bg: #03060e;
-  --v14-gold: #d9b05f;
-  --v14-purple: #7d38ff;
-  --v14-text: #f7f0df;
+/* Blinders V14.3 Visual Restore — imagens + renderização */
+:root{
+  --v14-bg:#03060e;
+  --v14-panel:rgba(5,9,20,.88);
+  --v14-gold:#d9b05f;
+  --v14-purple:#7d38ff;
+  --v14-blue:#1aa7ff;
+  --v14-text:#f7f0df;
+  --v14-muted:#a9b2c7;
 }
+html,body,#app{min-height:100%;margin:0;background:var(--v14-bg)!important;color:var(--v14-text)!important;font-family:Inter,system-ui,Arial,sans-serif}
+*{box-sizing:border-box}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
 
-html,
-body,
-#app {
-  min-height: 100%;
-  margin: 0;
-  background: var(--v14-bg);
-  color: var(--v14-text);
-  font-family: Inter, system-ui, Arial, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.v14-shell {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 256px minmax(0, 1fr);
+.v14-shell{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:268px minmax(0,1fr);
   background:
-    radial-gradient(circle at 60% 5%, rgba(83, 46, 180, .20), transparent 28%),
-    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.88)),
-    var(--page-bg) center/cover fixed no-repeat;
+    radial-gradient(circle at 78% 6%,rgba(125,56,255,.30),transparent 28%),
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.82)),
+    url('/assets/v14/bg/lobby.png') center/cover fixed no-repeat!important;
 }
-
-.v14-sidebar {
-  padding: 18px 14px;
-  background: linear-gradient(180deg, rgba(4,8,18,.96), rgba(3,4,10,.94));
-  border-right: 1px solid rgba(217,176,95,.34);
+.v14-shell:has(.game-stage-card),
+.v14-shell:has(.games-showcase-v14){background:
+    radial-gradient(circle at 78% 6%,rgba(125,56,255,.30),transparent 28%),
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.82)),
+    url('/assets/v14/bg/games.png') center/cover fixed no-repeat!important}
+.v14-sidebar{
+  position:sticky;top:0;height:100vh;overflow:auto;
+  padding:18px 14px;
+  background:linear-gradient(180deg,rgba(4,8,18,.94),rgba(3,4,10,.92));
+  border-right:1px solid rgba(217,176,95,.34);
+  box-shadow:16px 0 54px rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);
 }
-
-.v14-main {
-  min-width: 0;
-  padding: 0 18px 24px;
+.v14-brand{
+  display:grid;gap:8px;justify-items:center;margin-bottom:18px;
+  color:var(--v14-gold);text-decoration:none;letter-spacing:.22em
 }
+.brand-orb{
+  width:96px;height:96px;display:grid;place-items:center;border-radius:28px;
+  background:url('/assets/v14/icons/admin.png') center/cover no-repeat;
+  color:transparent!important;
+  box-shadow:0 0 34px rgba(125,56,255,.55);
+}
+.v14-brand b,.v14-brand small{display:block;text-align:center;text-shadow:0 0 14px rgba(217,176,95,.45)}
+.v14-nav{display:grid;gap:8px}
+.v14-nav a{
+  min-height:50px;display:grid;grid-template-columns:34px 1fr;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:14px;color:#e9edff;text-decoration:none;
+  border:1px solid rgba(255,255,255,.075);
+  background:linear-gradient(90deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+}
+.v14-nav a:hover,.v14-nav a.active{border-color:rgba(217,176,95,.55);background:linear-gradient(90deg,rgba(125,56,255,.32),rgba(26,167,255,.12))}
+.nav-dot{
+  width:30px;height:30px;border-radius:10px;
+  background:url('/assets/v14/icons/home.png') center/cover no-repeat;
+  box-shadow:0 0 14px rgba(125,56,255,.45);
+}
+.v14-nav a:nth-child(2) .nav-dot{background-image:url('/assets/v14/icons/games.png')}
+.v14-nav a:nth-child(3) .nav-dot{background-image:url('/assets/v14/icons/bank.png')}
+.v14-nav a:nth-child(4) .nav-dot{background-image:url('/assets/v14/icons/transfer.png')}
+.v14-nav a:nth-child(5) .nav-dot{background-image:url('/assets/v14/icons/deposit.png')}
+.v14-nav a:nth-child(6) .nav-dot{background-image:url('/assets/v14/icons/withdraw.png')}
+.v14-nav a:nth-child(7) .nav-dot{background-image:url('/assets/v14/icons/shop.png')}
+.v14-nav a:nth-child(8) .nav-dot{background-image:url('/assets/v14/icons/missions.png')}
+.v14-nav a:nth-child(9) .nav-dot{background-image:url('/assets/v14/icons/ranking.png')}
+.v14-nav a:nth-child(10) .nav-dot{background-image:url('/assets/v14/icons/profile.png')}
+.v14-nav a:nth-child(11) .nav-dot{background-image:url('/assets/v14/icons/admin.png')}
 
-.v14-hero {
-  min-height: 300px;
-  margin: 14px 0 18px;
-  border-radius: 18px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  text-align: center;
+.v14-main{min-width:0;padding:0 18px 28px}
+.v14-ticker{
+  display:flex;gap:12px;align-items:center;min-height:38px;padding:0 8px;
+  border-bottom:1px solid rgba(217,176,95,.28);color:var(--v14-gold);
+  overflow:hidden;background:rgba(2,4,10,.42);backdrop-filter:blur(8px)
+}
+.v14-ticker b{white-space:nowrap}
+.v14-ticker div{overflow:hidden;white-space:nowrap}
+.v14-ticker span{display:inline-block;animation:marquee 22s linear infinite}
+@keyframes marquee{from{transform:translateX(15%)}to{transform:translateX(-45%)}}
+
+.v14-topbar{
+  min-height:62px;display:flex;gap:14px;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(125,56,255,.25)
+}
+.v14-topbar nav{display:flex;gap:8px;flex-wrap:wrap}
+.v14-topbar a,.primary,.primary-link,.v14-wallet-panel a,.v14-shop-preview a,.v14-side-rank a{
+  padding:10px 16px;border-radius:12px;text-decoration:none;border:1px solid rgba(217,176,95,.42);
+  color:#fff;background:linear-gradient(90deg,rgba(125,56,255,.92),rgba(26,167,255,.56));
+  box-shadow:0 0 18px rgba(125,56,255,.22)
+}
+.v14-search{
+  width:min(520px,46vw);padding:12px 16px;color:var(--v14-muted);
+  border:1px solid rgba(125,56,255,.38);border-radius:999px;background:rgba(0,0,0,.38);
+}
+.v14-hero{
+  min-height:360px!important;margin:16px 0 18px!important;border-radius:24px!important;overflow:hidden;
+  display:grid;place-items:center;text-align:center;
   background:
-    linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.14), rgba(0,0,0,.78)),
-    var(--page-bg) center/cover no-repeat;
+    linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.06),rgba(0,0,0,.78)),
+    url('/assets/v14/bg/lobby.png') center/cover no-repeat!important;
+  border:1px solid rgba(217,176,95,.30);
+  box-shadow:0 24px 72px rgba(0,0,0,.45);
 }
+.v14-hero h1{color:var(--v14-gold)!important;letter-spacing:.18em;text-shadow:0 0 30px rgba(125,56,255,.85);font-size:clamp(2.1rem,5vw,5rem)}
+.v14-hero p{font-size:1.1rem;color:#dbe3ff}
+.project-signature{color:#c5a0ff;letter-spacing:.18em;text-shadow:0 0 18px rgba(125,56,255,.65)}
 
-.v14-hero h1 {
-  color: var(--v14-gold);
-  letter-spacing: .18em;
+.v14-dashboard{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:16px}
+.v14-main-banner,.v14-side-rank,.v14-wallet-panel,.v14-transfer-panel,.v14-shop-preview,.v14-admin-preview,.bank-card,.game-card-v14,.v14-game-tile,.category-card,.panel,.v14-error-card{
+  border:1px solid rgba(217,176,95,.34);
+  background:linear-gradient(180deg,rgba(5,9,20,.84),rgba(2,4,10,.92));
+  border-radius:22px;box-shadow:0 20px 56px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.035);
+  overflow:hidden;backdrop-filter:blur(8px);
 }
-
-.v14-nav {
-  display: grid;
-  gap: 7px;
+.v14-main-banner{
+  min-height:380px;padding:46px;position:relative;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.74),rgba(0,0,0,.10),rgba(0,0,0,.72)),
+    url('/assets/v14/bg/lobby.png') center/cover no-repeat;
 }
+.v14-main-banner h2{font-size:clamp(2.4rem,6vw,5.2rem);color:var(--v14-gold);letter-spacing:.18em;text-shadow:0 0 24px rgba(217,176,95,.38)}
+.v14-side-rank{padding:18px}
+.v14-side-rank ol{display:grid;gap:10px;padding:0;list-style:none}
+.v14-side-rank li{display:flex;justify-content:space-between;gap:8px;padding:12px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(125,56,255,.18)}
 
-.v14-nav a {
-  min-height: 44px;
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  color: #dbe3ff;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,.06);
-  background: rgba(255,255,255,.025);
+.v14-game-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px}
+.v14-game-tile{
+  min-height:230px;color:var(--v14-gold);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;gap:8px;text-align:center;
+  background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/roulette.png') center/cover no-repeat;
 }
+.v14-game-tile:nth-child(2){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/blackjack.png')}
+.v14-game-tile:nth-child(3){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/bingo.png')}
+.v14-game-tile:nth-child(4){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/dice.png')}
+.v14-game-tile:nth-child(5){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/slots.png')}
+.v14-game-tile:nth-child(6){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/memory.png')}
+.v14-game-tile:nth-child(7){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/crash.png')}
+.v14-game-tile:nth-child(8){background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.84)),url('/assets/v14/games/scratch.png')}
+.v14-game-tile span{font-size:1.25rem;font-weight:900;letter-spacing:.10em;text-shadow:0 0 18px #000}
+.v14-game-tile b{align-self:center;min-width:120px;padding:8px 14px;border-radius:10px;background:rgba(125,56,255,.70);border:1px solid rgba(217,176,95,.45)}
 
-.v14-nav img {
-  width: 28px;
-  height: 28px;
-  object-fit: cover;
-  border-radius: 8px;
+.v14-wallet-panel{min-height:260px;padding:28px;background:linear-gradient(90deg,rgba(0,0,0,.70),rgba(0,0,0,.20)),url('/assets/v14/bg/iris.png') center/cover no-repeat}
+.v14-wallet-panel nav{display:flex;gap:8px;flex-wrap:wrap}
+.v14-shop-preview{padding:22px;background:linear-gradient(90deg,rgba(0,0,0,.70),rgba(0,0,0,.20)),url('/assets/v14/bg/games.png') center/cover no-repeat}
+
+.games-showcase-v14{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:16px}
+.game-card-v14 a{color:var(--v14-text);text-decoration:none;display:grid}
+.game-card-v14-img{min-height:320px;display:grid;place-items:end center;padding:18px;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/roulette.png') center/cover no-repeat}
+.game-card-v14:nth-child(2) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/blackjack.png')}
+.game-card-v14:nth-child(3) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/bingo.png')}
+.game-card-v14:nth-child(4) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/dice.png')}
+.game-card-v14:nth-child(5) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/slots.png')}
+.game-card-v14:nth-child(6) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/memory.png')}
+.game-card-v14:nth-child(7) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/crash.png')}
+.game-card-v14:nth-child(8) .game-card-v14-img{background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.80)),url('/assets/v14/games/scratch.png')}
+.game-card-v14-img span{font-size:1.45rem;color:var(--v14-gold);letter-spacing:.16em;text-shadow:0 0 18px #000}
+.game-card-v14-body{padding:16px;display:grid;gap:8px}
+.game-card-v14 h2{color:var(--v14-gold);letter-spacing:.08em}
+
+.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px}
+.game-stage-card{min-height:620px;border-radius:24px;position:relative;padding:18px;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.70)),url('/assets/v14/bg/games.png') center/cover no-repeat}
+.game-table-safe{min-height:100%;display:grid;align-content:center;justify-items:center;text-align:center;gap:16px;border-radius:20px;padding:22px;background:linear-gradient(135deg,rgba(5,9,20,.55),rgba(26,167,255,.10));border:1px solid rgba(217,176,95,.25)}
+.game-side{display:grid;gap:16px}.panel,.category-card,.bank-card{padding:18px}
+.bank-layout,.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:16px}
+.bank-card input,.panel input{width:100%;padding:12px 14px;border-radius:12px;color:var(--v14-text);background:rgba(0,0,0,.42);border:1px solid rgba(125,56,255,.30)}
+.slots-grid,.bingo-demo{display:grid;grid-template-columns:repeat(3,96px);gap:10px}
+.slots-grid span,.bingo-demo span,.cards-row span,.dice-demo span,.generic-demo{
+  display:grid;place-items:center;min-height:78px;border-radius:16px;background:rgba(0,0,0,.55);border:1px solid rgba(217,176,95,.35);color:var(--v14-gold);
+  box-shadow:0 0 18px rgba(125,56,255,.22)
 }
+.cards-row,.dice-demo{display:flex;gap:12px}
+.roulette-demo{width:220px;height:220px;border-radius:50%;display:grid;place-items:center;border:10px solid var(--v14-gold);background:radial-gradient(circle,#1a102f,#02030a);box-shadow:0 0 34px rgba(125,56,255,.55)}
+.v14-signature{margin-top:18px;color:var(--v14-muted);display:grid;gap:4px}
+.clicked{transform:scale(.98);filter:brightness(1.2)}
 
-.games-showcase-v14,
-.bank-layout {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(280px, 1fr));
-  gap: 14px;
+@media(max-width:1180px){
+  .games-showcase-v14{grid-template-columns:repeat(2,1fr)}
+  .v14-dashboard{grid-template-columns:1fr}
 }
-
-.game-card-v14,
-.bank-card,
-.v14-game-tile {
-  border: 1px solid rgba(217,176,95,.34);
-  background: linear-gradient(180deg, rgba(5,9,20,.88), rgba(2,4,10,.92));
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-@media (max-width: 760px) {
-  .v14-shell,
-  .games-showcase-v14,
-  .bank-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .v14-main {
-    padding: 0 10px 16px;
-  }
+@media(max-width:760px){
+  .v14-shell,.bank-layout,.games-showcase-v14,.game-layout,.admin-grid{grid-template-columns:1fr}
+  .v14-main{padding:0 10px 16px}
+  .v14-sidebar{position:relative;height:auto}
+  .v14-hero{min-height:260px!important}
+  .v14-search{width:100%}
+  .v14-topbar{flex-direction:column;align-items:stretch}
+  .v14-game-row{grid-template-columns:1fr}
 }

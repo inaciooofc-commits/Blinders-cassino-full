@@ -27,7 +27,6 @@ export function route() {
     if (path === '/rankings') return render(app, simplePage('Rankings', 'Maiores vitórias, partidas e saldos.', 'rankings'));
     if (path === '/shop') return render(app, simplePage('Loja', 'Itens visuais seguros, molduras, títulos e badges.', 'shop'));
     if (path === '/events') return render(app, simplePage('Eventos', 'Eventos ativos do Blinders Casino.', 'events'));
-
     return render(app, simplePage('Página não encontrada', `Rota não encontrada: ${path}`, 'menu'));
   } catch (error) {
     render(app, errorPage(error));
@@ -42,7 +41,7 @@ function render(app, html) {
 
 function shell({ title, subtitle = '', active = 'menu', body = '' }) {
   return `
-    <main class="v14-shell" style="--page-bg:linear-gradient(135deg,#040716,#161036,#050713)">
+    <main class="v14-shell">
       <aside class="v14-sidebar">
         <a class="v14-brand" href="/menu">
           <span class="brand-orb">B</span>
@@ -67,7 +66,7 @@ function shell({ title, subtitle = '', active = 'menu', body = '' }) {
       <section class="v14-main">
         <div class="v14-ticker">
           <b>ANÚNCIO GLOBAL</b>
-          <div><span>Build estável ativo • Banco IRIS • Jogos organizados • Cloudflare protegido</span></div>
+          <div><span>Visual V14.3 restaurado • imagens PNG ativas • Banco IRIS • Jogos organizados • Cloudflare protegido</span></div>
         </div>
 
         <header class="v14-topbar">
@@ -103,14 +102,14 @@ function nav(href, label, active) {
 
 function menuPage() {
   const tiles = games.map(([key, name]) => `
-    <a class="v14-game-tile" href="/game?game=${key}">
+    <a class="v14-game-tile v14-tile-${key}" href="/game?game=${key}">
       <span>${escapeHtml(name)}</span>
       <b>Jogar</b>
     </a>`).join('');
 
   return shell({
     title: 'Blinders Casino',
-    subtitle: 'Base estável para Cloudflare Pages.',
+    subtitle: 'Visual anime cyber restaurado com imagens PNG.',
     active: 'menu',
     body: `
       <section class="v14-dashboard">
@@ -118,7 +117,7 @@ function menuPage() {
           <div>
             <span>BEM-VINDO AO</span>
             <h2>BLINDERS</h2>
-            <p>Visual neon, Banco IRIS, jogos e painel de comando.</p>
+            <p>Casino neon com Banco IRIS, jogos e painel de comando.</p>
             <a class="primary-link" href="/games">Jogar agora</a>
           </div>
         </article>
@@ -158,7 +157,7 @@ function menuPage() {
 
 function gamesPage() {
   const cards = games.map(([key, name, desc]) => `
-    <article class="game-card-v14">
+    <article class="game-card-v14 game-card-${key}">
       <a href="/game?game=${key}">
         <div class="game-card-v14-img"><span>${escapeHtml(name)}</span></div>
         <div class="game-card-v14-body">
@@ -172,7 +171,7 @@ function gamesPage() {
 
   return shell({
     title: 'Jogos',
-    subtitle: 'Regras organizadas, telas separadas e layout sem sobreposição.',
+    subtitle: 'Cards PNG, regras organizadas e layout sem sobreposição.',
     active: 'games',
     body: `<section class="games-showcase-v14">${cards}</section>`
   });
@@ -187,7 +186,7 @@ function gamePage(key) {
     active: 'games',
     body: `
       <section class="game-layout">
-        <article class="game-stage-card v14-game-stage">
+        <article class="game-stage-card v14-game-stage game-stage-${game[0]}">
           <div class="game-table-safe">
             <h2>${escapeHtml(game[1])}</h2>
             <p>${escapeHtml(game[2])}</p>
@@ -284,7 +283,7 @@ function simplePage(title, desc, active) {
     title,
     subtitle: desc,
     active,
-    body: `<section class="admin-grid">${card(title, desc)}${card('Status', 'Sistema em base estável.')}${card('Próxima etapa', 'Reativar recursos avançados aos poucos.')}</section>`
+    body: `<section class="admin-grid">${card(title, desc)}${card('Status', 'Sistema visual V14.3 restaurado.')}${card('Próxima etapa', 'Reativar funções Supabase aos poucos.')}</section>`
   });
 }
 

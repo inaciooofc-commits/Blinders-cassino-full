@@ -1,0 +1,15 @@
+V14.3 VISUAL RESTORE
+
+Esse patch mantém o Router estável, mas restaura imagens e renderização visual.
+
+Suba o conteúdo extraído na raiz do GitHub, substituindo:
+- src/core/Router.js
+- src/styles/v14-anime-casino.css
+
+E adicionando:
+- public/assets/v14/bg/
+- public/assets/v14/games/
+- public/assets/v14/icons/
+
+Não suba a pasta blinders-v14-3-visual-restore como pasta dentro do repositório.
+Suba o conteúdo de dentro dela.
