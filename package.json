@@ -1,1 +1,20 @@
-/* games stable fallback */
+{
+  "name": "blinders-cassino",
+  "version": "14.2.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/create-spa-fallback.cjs",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "vite": "latest",
+    "pixi.js": "^8.6.0",
+    "gsap": "^3.12.5",
+    "chart.js": "latest",
+    "howler": "latest"
+  },
+  "devDependencies": {}
+}
