@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
+
 export default defineConfig({
+  plugins: [],
   appType: 'spa',
   build: {
     target: 'es2020',
@@ -7,7 +9,17 @@ export default defineConfig({
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1200,
     rollupOptions: {
-      output: { manualChunks: { vendor: ['pixi.js', 'gsap', 'chart.js', 'howler', '@supabase/supabase-js'] } }
+      output: {
+        manualChunks: {
+          vendor: [
+            'pixi.js',
+            'gsap',
+            'chart.js',
+            'howler',
+            '@supabase/supabase-js'
+          ]
+        }
+      }
     }
   }
 });
