@@ -1,0 +1,1 @@
+.premium-card,.command-hero-card,.command-side-card{border:1px solid rgba(218,166,58,.38);border-radius:22px;background:rgba(5,9,20,.90);padding:18px}.command-grid{display:grid;grid-template-columns:1fr 320px;gap:14px}@media(max-width:900px){.command-grid{grid-template-columns:1fr}}

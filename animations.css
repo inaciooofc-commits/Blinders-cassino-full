@@ -1,0 +1,1 @@
+.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px}.game-stage-card{min-height:560px;border-radius:18px;position:relative;overflow:hidden}.pixi-wrap{min-height:470px}.dom-layer{position:absolute;inset:0}.game-side{display:grid;gap:14px}@media(max-width:900px){.game-layout{grid-template-columns:1fr}}
