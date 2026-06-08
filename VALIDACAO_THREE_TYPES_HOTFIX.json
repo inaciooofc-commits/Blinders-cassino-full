@@ -1,0 +1,13 @@
+{
+  "hotfix": "V4_THREE_TYPES_TS7006_FIX",
+  "fixed_files": [
+    "package.json",
+    "src/engines/ThreeShowcaseEngine.ts"
+  ],
+  "changes": [
+    "adicionado @types/three em devDependencies",
+    "corrigido parâmetro obj implicit any em scene.traverse"
+  ],
+  "alerts": {},
+  "expected_result": "remove erro de declaração do módulo three e TS7006"
+}

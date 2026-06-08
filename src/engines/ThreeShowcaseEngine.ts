@@ -120,7 +120,7 @@ export class ThreeShowcaseEngine {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       renderer.dispose();
-      scene.traverse(obj => {
+      scene.traverse((obj: any) => {
         const mesh = obj as any;
         if (mesh.geometry) mesh.geometry.dispose?.();
         if (mesh.material) {

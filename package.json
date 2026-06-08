@@ -28,6 +28,7 @@
     "@tailwindcss/vite": "latest",
     "eslint": "latest",
     "@types/react": "latest",
-    "@types/react-dom": "latest"
+    "@types/react-dom": "latest",
+    "@types/three": "latest"
   }
 }
