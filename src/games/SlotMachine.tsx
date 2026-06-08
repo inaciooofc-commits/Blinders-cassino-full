@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { slotPayout } from '../lib/casinoMath';
 import { slotSymbols } from '../data/games';
 import type { UserProfile } from '../types';
+import { studioAssets } from '../lib/studioAssets';
 
 interface SlotMachineProps {
   profile: UserProfile;
@@ -142,7 +143,7 @@ export const SlotMachine = ({ profile, onSettle }: SlotMachineProps) => {
   };
 
   return (
-    <section className="glass-panel rounded-[2rem] p-5">
+    <section className="glass-panel rounded-[2rem] p-5" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,2,10,.82), rgba(5,2,10,.48)), url(${{'studioAssets.backgrounds.lounge'}})`, backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm font-bold tracking-[0.22em] text-orange-300">FOREST OF TRIALS</p>

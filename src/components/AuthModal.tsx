@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Shield, UserPlus } from 'lucide-react';
+import { studioAssets } from '../lib/studioAssets';
 
 interface AuthModalProps {
   onSignIn: (email: string, password: string) => Promise<void>;
@@ -26,12 +27,12 @@ export const AuthModal = ({ onSignIn, onSignUp, onGoogle }: AuthModalProps) => {
   };
 
   return (
-    <main className="ninja-bg relative min-h-screen overflow-hidden px-4 py-8">
+    <main className="relative min-h-screen overflow-hidden px-4 py-8" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,2,10,.86), rgba(5,2,10,.38), rgba(5,2,10,.86)), url(${studioAssets.backgrounds.control})`, backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at center, transparent 0 18%, rgba(255,69,0,.18) 19%, transparent 20%, transparent 30%, rgba(255,215,0,.12) 31%, transparent 32%)', animation: 'sealPulse 4s ease-in-out infinite' }} />
       <motion.section initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel relative z-10 mx-auto mt-10 max-w-[520px] rounded-[2rem] p-6 md:mt-20 md:p-8">
         <div className="mb-6 text-center">
           <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-yellow-300/40 bg-red-950/60 chakra-glow">
-            <Shield className="h-12 w-12 text-yellow-300" />
+            <img src={studioAssets.icons.login} alt="Login" className="h-16 w-16 object-contain" />
           </div>
           <h1 className="mt-4 text-4xl font-black tracking-[0.24em] text-yellow-200">BLINDERS</h1>
           <p className="tracking-[0.3em] text-orange-300">NINJA CASINO</p>

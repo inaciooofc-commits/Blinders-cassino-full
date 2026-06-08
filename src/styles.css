@@ -137,3 +137,54 @@ select {
 .animate-smoke-in {
   animation: smokeIn .45s ease both;
 }
+
+
+/* Studio asset integration */
+.studio-lobby-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .84), rgba(5, 2, 10, .24), rgba(5, 2, 10, .88)),
+    url('/assets/studio/backgrounds/casino-lobby.png') center/cover fixed no-repeat;
+}
+
+.studio-lounge-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .82), rgba(5, 2, 10, .28), rgba(5, 2, 10, .82)),
+    url('/assets/studio/backgrounds/casino-lounge.png') center/cover fixed no-repeat;
+}
+
+.studio-control-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .86), rgba(5, 2, 10, .36), rgba(5, 2, 10, .88)),
+    url('/assets/studio/backgrounds/control-room.png') center/cover fixed no-repeat;
+}
+
+.asset-card {
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.asset-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(255, 69, 0, .25), transparent 26%),
+    linear-gradient(180deg, transparent, rgba(0,0,0,.76));
+}
+
+.icon-img {
+  width: 1.65rem;
+  height: 1.65rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 69, 0, .3));
+}
+
+.model-frame {
+  border: 1px solid rgba(255, 215, 0, .22);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 69, 0, .12),
+    0 0 34px rgba(255, 69, 0, .14),
+    0 0 44px rgba(41, 169, 255, .08);
+}

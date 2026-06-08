@@ -18,6 +18,7 @@ import { ShopPage } from './ShopPage';
 import { VipPage } from './VipPage';
 import { EventsPage } from './EventsPage';
 import { AuthModal } from '../components/AuthModal';
+import { StudioShowcase } from '../components/StudioShowcase';
 import { isSupabaseConfigured } from '../lib/supabase';
 
 export const MainApp = () => {
@@ -41,7 +42,7 @@ export const MainApp = () => {
   }
 
   const renderContent = () => {
-    if (view === 'home') return <><Hero profile={profile} onPlay={() => setView('lobby')} /><Dashboard profile={profile} bets={bets} /></>;
+    if (view === 'home') return <><Hero profile={profile} onPlay={() => setView('lobby')} /><StudioShowcase /><Dashboard profile={profile} bets={bets} /></>;
     if (view === 'lobby') return <GameLobby onOpenGame={openGame} />;
     if (view === 'slots') return <SlotMachine profile={profile} onSettle={(bet, payout, result) => settle('slots', bet, payout, result)} />;
     if (view === 'game' && activeGame === 'roulette') return <RouletteGame profile={profile} onSettle={(bet, payout, result) => settle('roulette', bet, payout, result)} />;
@@ -52,11 +53,12 @@ export const MainApp = () => {
     if (view === 'shop') return <ShopPage />;
     if (view === 'profile') return <Dashboard profile={profile} bets={bets} />;
     if (view === 'events') return <EventsPage />;
+    if (view === 'studio') return <StudioShowcase />;
     return <Hero profile={profile} onPlay={() => setView('lobby')} />;
   };
 
   return (
-    <main className="ninja-bg min-h-screen">
+    <main className="studio-lobby-bg min-h-screen">
       <LeafParticles />
       <Sidebar active={view} profile={profile} onNavigate={setView} onSignOut={auth.signOut} />
       <MobileNav onNavigate={setView} />

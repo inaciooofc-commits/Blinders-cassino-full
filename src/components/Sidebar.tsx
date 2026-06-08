@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Banknote, Crown, Dice5, Home, LogOut, ScrollText, Shield, ShoppingBag, Star, Trophy, User, Zap } from 'lucide-react';
 import type { UserProfile } from '../types';
 import { formatCoins } from '../lib/casinoMath';
+import { studioAssets } from '../lib/studioAssets';
 
 interface SidebarProps {
   active: string;
@@ -18,14 +19,15 @@ const items = [
   ['vip', 'Torre VIP', Crown],
   ['shop', 'Loja', ShoppingBag],
   ['profile', 'Perfil', User],
-  ['events', 'Eventos', Trophy]
+  ['events', 'Eventos', Trophy],
+  ['studio', 'Studio Engines', Zap]
 ] as const;
 
 export const Sidebar = ({ active, profile, onNavigate, onSignOut }: SidebarProps) => (
   <aside className="glass-panel fixed left-3 top-3 z-40 hidden h-[calc(100vh-24px)] w-[260px] rounded-3xl p-4 lg:block">
     <button onClick={() => onNavigate('home')} className="mb-5 grid w-full place-items-center rounded-2xl border border-yellow-400/20 bg-black/25 p-4 text-center">
       <div className="grid h-20 w-20 place-items-center rounded-full border border-yellow-300/40 bg-red-950/60 chakra-glow">
-        <Shield className="h-10 w-10 text-yellow-300" />
+        <img src={studioAssets.icons.vip} alt="Blinders" className="h-14 w-14 object-contain" />
       </div>
       <h1 className="mt-3 text-2xl font-black tracking-[0.22em] text-yellow-200">BLINDERS</h1>
       <span className="text-xs tracking-[0.4em] text-orange-300">CASINO</span>

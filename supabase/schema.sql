@@ -1,10 +1,13 @@
--- BLINDERS CASINO — SUPABASE SCHEMA V3 SUPER SAFE
+-- BLINDERS CASINO — SUPABASE SCHEMA V4 TRIGGER SAFE
 -- Corrige:
--- 1) policy already exists
--- 2) relation "public.bets" does not exist
--- 3) realtime/publication quebrando quando tabela ainda não existe
+-- ERROR 2BP01: cannot drop function handle_new_user() because other objects depend on it
 --
--- Pode rodar mais de uma vez.
+-- Motivo:
+-- Já existe outro trigger usando public.handle_new_user(), por exemplo:
+-- on_auth_user_created_blinders
+--
+-- Este SQL remove com segurança todos os triggers em auth.users que dependem
+-- de public.handle_new_user(), antes de recriar função e trigger.
 
 create extension if not exists pgcrypto;
 
@@ -99,10 +102,34 @@ for insert
 with check (auth.uid() = user_id);
 
 -- =========================
--- TRIGGER DE PERFIL
+-- TRIGGERS/FUNÇÃO DE PERFIL
 -- =========================
-
+-- Remove triggers conhecidos.
 drop trigger if exists on_auth_user_created on auth.users;
+drop trigger if exists on_auth_user_created_blinders on auth.users;
+
+-- Remove qualquer outro trigger em auth.users que chame public.handle_new_user().
+do $$
+declare
+  r record;
+begin
+  for r in
+    select tg.tgname
+    from pg_trigger tg
+    join pg_class c on c.oid = tg.tgrelid
+    join pg_namespace n on n.oid = c.relnamespace
+    join pg_proc p on p.oid = tg.tgfoid
+    join pg_namespace pn on pn.oid = p.pronamespace
+    where n.nspname = 'auth'
+      and c.relname = 'users'
+      and pn.nspname = 'public'
+      and p.proname = 'handle_new_user'
+      and tg.tgisinternal = false
+  loop
+    execute format('drop trigger if exists %I on auth.users', r.tgname);
+  end loop;
+end $$;
+
 drop function if exists public.handle_new_user();
 
 create or replace function public.handle_new_user()
@@ -120,14 +147,13 @@ begin
 end;
 $$;
 
-create trigger on_auth_user_created
+create trigger on_auth_user_created_blinders
 after insert on auth.users
 for each row execute function public.handle_new_user();
 
 -- =========================
 -- REALTIME SEGURO
 -- =========================
--- Só adiciona à publication se a tabela existir e se ainda não estiver adicionada.
 
 do $$
 begin
@@ -158,4 +184,4 @@ begin
   end if;
 end $$;
 
-select 'BLINDERS_SUPABASE_SCHEMA_V3_SUPER_SAFE_OK' as status;
+select 'BLINDERS_SUPABASE_SCHEMA_V4_TRIGGER_SAFE_OK' as status;

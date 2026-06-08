@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { roulettePayout } from '../lib/casinoMath';
 import type { UserProfile } from '../types';
+import { studioAssets } from '../lib/studioAssets';
 
 interface RouletteGameProps {
   profile: UserProfile;
@@ -27,7 +28,7 @@ export const RouletteGame = ({ profile, onSettle }: RouletteGameProps) => {
   };
 
   return (
-    <section className="glass-panel rounded-[2rem] p-5">
+    <section className="glass-panel rounded-[2rem] p-5" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,2,10,.82), rgba(5,2,10,.48)), url(${{'studioAssets.backgrounds.control'}})`, backgroundSize: "cover", backgroundPosition: "center" }}>
       <div className="mb-4">
         <p className="text-sm font-bold tracking-[0.22em] text-orange-300">SALÃO UCHIHA</p>
         <h2 className="text-3xl font-black tracking-[0.14em] text-yellow-200">Sharingan Roulette</h2>

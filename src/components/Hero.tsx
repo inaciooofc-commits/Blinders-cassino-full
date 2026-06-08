@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Flame, Play, Shield } from 'lucide-react';
 import type { UserProfile } from '../types';
 import { formatCoins } from '../lib/casinoMath';
+import { ThreeShowcase } from './ThreeShowcase';
+import { studioAssets } from '../lib/studioAssets';
 
 interface HeroProps {
   profile: UserProfile;
@@ -13,7 +15,7 @@ export const Hero = ({ profile, onPlay }: HeroProps) => (
     <motion.article
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-panel chakra-glow relative min-h-[420px] overflow-hidden rounded-[2rem] p-6 md:p-10"
+      className="glass-panel chakra-glow asset-card relative min-h-[520px] overflow-hidden rounded-[2rem] p-6 md:p-10" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,2,10,.82), rgba(5,2,10,.25), rgba(5,2,10,.72)), url(${studioAssets.backgrounds.lobby})` }}
     >
       <div className="absolute inset-0 opacity-50" style={{ background: 'radial-gradient(circle at 72% 35%, rgba(255,69,0,.34), transparent 25%), radial-gradient(circle at 30% 78%, rgba(41,169,255,.20), transparent 28%)' }} />
       <div className="relative z-10 max-w-3xl">
@@ -35,7 +37,7 @@ export const Hero = ({ profile, onPlay }: HeroProps) => (
           <button className="btn-ghost">Ver Eventos</button>
         </div>
       </div>
-      <div className="absolute bottom-8 right-8 hidden h-48 w-48 rounded-full border border-orange-400/30 bg-red-950/30 blur-[1px] md:block" />
+      <div className="absolute bottom-6 right-6 hidden w-[360px] max-w-[42%] md:block"><ThreeShowcase className="model-frame min-h-[260px] bg-black/20" /></div>
     </motion.article>
 
     <aside className="grid gap-4">
