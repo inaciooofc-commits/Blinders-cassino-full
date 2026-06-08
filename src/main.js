@@ -4,6 +4,7 @@ import './styles/games.css';
 import './styles/responsive.css';
 import './styles/v3-visual-lock.css';
 import './styles/v4-login-pwa.css';
+import './styles/v5-ninja-release.css';
 import { boot, route } from './core/Router.js';
 
 function fatal(error) {

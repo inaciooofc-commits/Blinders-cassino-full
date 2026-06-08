@@ -1,12 +1,19 @@
 {
-  "name":"Blinders Cassino",
-  "short_name":"Blinders",
-  "description":"Blinders Cassino — lançamento visual anime/cyber",
-  "start_url":"/",
-  "scope":"/",
-  "display":"standalone",
-  "orientation":"any",
-  "background_color":"#02050b",
-  "theme_color":"#050816",
-  "icons":[{"src":"/assets/v14/icons/home.png","sizes":"256x256","type":"image/png","purpose":"any maskable"}]
+  "name": "Blinders V5 Ninja Release",
+  "short_name": "Blinders",
+  "description": "Blinders Cassino — Ninja Release Final",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#02050b",
+  "theme_color": "#050816",
+  "icons": [
+    {
+      "src": "/assets/v16/logos/blinders-ninja-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }

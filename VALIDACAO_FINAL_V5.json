@@ -1,0 +1,25 @@
+{
+  "name": "BLINDERS_V5_NINJA_RELEASE_FINAL_FRONT_LOCK",
+  "front_only": true,
+  "files": 239,
+  "js_syntax_errors": {
+    "missing_png": [
+      "/assets/v16/cards/${key}.png",
+      "/assets/v16/icons/${icon}.png",
+      "/assets/v16/items/${i[0]}.png",
+      "/assets/v16/map/${t[0]}.png",
+      "/assets/v16/tables/${key}-table.png"
+    ]
+  },
+  "verify": "BLINDERS VERIFY OK: 15 imports verificados.",
+  "css_imports": [
+    "./styles/base.css",
+    "./styles/release.css",
+    "./styles/games.css",
+    "./styles/responsive.css",
+    "./styles/v3-visual-lock.css",
+    "./styles/v4-login-pwa.css",
+    "./styles/v5-ninja-release.css"
+  ],
+  "png_refs_checked": 18
+}
