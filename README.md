@@ -1,50 +1,22 @@
-# Blinders Cassino — Versão Final
+# Blinders Cassino — Release Launch
 
-Projeto Vite pronto para Cloudflare Pages, com visual cyber/anime, Banco IRIS, jogos, loja, missões, eventos, painel admin e Supabase SQL via RPC.
+Versão principal de lançamento.
 
-## Deploy Cloudflare
+## Aplicar
+1. Rode `database/BLINDERS_RELEASE_LAUNCH_SQL.sql` no Supabase.
+2. Configure Cloudflare Pages:
+   - Build command: `npm run build`
+   - Output: `dist`
+3. Configure:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
 
-Framework: Vite  
-Build command:
+## Dinheiro antigo
+O banco armazena em unidade B:
+- 1 = 1b
+- 10 = 10b
+- 100 = 100b
+- 1000 = 1T
 
-```bash
-npm run build
-```
-
-Output directory:
-
-```bash
-dist
-```
-
-## Variáveis de ambiente
-
-Configure no Cloudflare Pages:
-
-```text
-VITE_SUPABASE_URL=https://SEU-PROJETO.supabase.co
-VITE_SUPABASE_ANON_KEY=SUA_ANON_KEY
-```
-
-Não use `service_role` no frontend.
-
-## Supabase
-
-Cole o arquivo abaixo no Supabase SQL Editor:
-
-```text
-database/BLINDERS_FINAL_SQL.sql
-```
-
-Resultado esperado:
-
-```text
-BLINDERS_FINAL_SQL_OK
-```
-
-## Segurança
-
-- RLS ativado.
-- Tabelas sensíveis sem escrita direta para anon/authenticated.
-- Ações passam por RPC SECURITY DEFINER.
-- Frontend usa apenas anon key.
+## SQL only mode
+Se o Banco IRIS não conectar, jogos/banco/loja/admin ficam bloqueados.

@@ -1,32 +1,4 @@
-export function esc(value) {
-  return String(value ?? '').replace(/[&<>"']/g, c => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  }[c]));
-}
-
-export function money(value) {
-  const n = Number(value || 0);
-  return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
-export function number(value) {
-  return Number(value || 0).toLocaleString('pt-BR');
-}
-
-export function parseAmount(value) {
-  const raw = String(value || '').trim().toUpperCase().replace(/\s/g, '').replace(',', '.');
-  if (!raw) return 0;
-  const num = Number(raw.replace(/[^0-9.]/g, ''));
-  if (!Number.isFinite(num)) return 0;
-  if (raw.endsWith('T')) return num * 1000000000000;
-  if (raw.endsWith('B')) return num * 1000000000;
-  return num;
-}
-
-export function now() {
-  return new Date().toLocaleString('pt-BR');
-}
+export function esc(v){ return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])); }
+export function parseMoney(value){ const raw=String(value||'').trim().toLowerCase().replace(',','.').replace(/\s/g,''); const n=Number(raw.replace(/[^0-9.]/g,'')); if(!Number.isFinite(n)) return 0; if(raw.endsWith('t')) return n*1000; if(raw.endsWith('b')) return n; return n; }
+export function oldMoney(value){ const b=Number(value||0); if(!Number.isFinite(b)) return '0b'; if(Math.abs(b)>=1000) return `${trim(b/1000)}T`; return `${trim(b)}b`; }
+function trim(n){ return Number(n).toLocaleString('pt-BR',{maximumFractionDigits:2}); }

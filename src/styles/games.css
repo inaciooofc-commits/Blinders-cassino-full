@@ -1,6 +1,1 @@
-.spin-wheel{animation:wheelSpin 2s ease-out}
-.rolling span{animation:diceRoll .55s ease-in-out}
-.spinning span{animation:slotPulse .7s ease-in-out}
-@keyframes wheelSpin{from{transform:rotate(0)}to{transform:rotate(1080deg)}}
-@keyframes diceRoll{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(18deg) scale(1.08)}}
-@keyframes slotPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px);filter:brightness(1.3)}}
+.game-tile:hover,.shop-card:hover,.bank-grid article:hover,.admin-grid article:hover{transform:translateY(-3px);filter:brightness(1.08)}.game-tile,.shop-card,.bank-grid article,.admin-grid article,button{transition:.2s}button:hover{filter:brightness(1.15)}

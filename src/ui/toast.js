@@ -1,21 +1,2 @@
-export function toast(message, type = '') {
-  let stack = document.querySelector('#toastStack');
-  if (!stack) {
-    stack = document.createElement('div');
-    stack.id = 'toastStack';
-    stack.className = 'toast-stack';
-    document.body.appendChild(stack);
-  }
-
-  const el = document.createElement('div');
-  el.className = `toast ${type}`;
-  el.textContent = message;
-  stack.appendChild(el);
-
-  requestAnimationFrame(() => el.classList.add('show'));
-
-  setTimeout(() => {
-    el.classList.remove('show');
-    setTimeout(() => el.remove(), 300);
-  }, 3200);
-}
+export function toast(message,type=''){ let s=document.querySelector('#toastStack'); if(!s){s=document.createElement('div');s.id='toastStack';s.className='toast-stack';document.body.appendChild(s);} const e=document.createElement('div');e.className=`toast ${type}`;e.textContent=message;s.appendChild(e);requestAnimationFrame(()=>e.classList.add('show'));setTimeout(()=>{e.classList.remove('show');setTimeout(()=>e.remove(),240)},3200); }
+export function musicPopup(title){ const old=document.querySelector('#musicPopup'); if(old)old.remove(); const e=document.createElement('div'); e.id='musicPopup'; e.className='music-popup'; e.textContent=`Tocando agora: ${title || 'Rádio Blinders'}`; document.body.appendChild(e); requestAnimationFrame(()=>e.classList.add('show')); setTimeout(()=>{e.classList.remove('show');setTimeout(()=>e.remove(),260)},5000); }

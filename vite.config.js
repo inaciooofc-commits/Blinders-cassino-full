@@ -1,12 +1,2 @@
 import { defineConfig } from 'vite';
-
-export default defineConfig({
-  plugins: [],
-  appType: 'spa',
-  build: {
-    target: 'es2020',
-    sourcemap: false,
-    cssCodeSplit: true,
-    chunkSizeWarningLimit: 1600
-  }
-});
+export default defineConfig({ plugins: [], appType: 'spa', build: { target: 'es2020', sourcemap: false, cssCodeSplit: true, chunkSizeWarningLimit: 2600 } });
