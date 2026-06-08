@@ -1,0 +1,8 @@
+{
+  "fixed_files": [
+    "src/hooks/useProfile.ts",
+    "supabase/schema.sql"
+  ],
+  "typescript_fix": "supabase capturado em const client antes de usar no effect/cleanup",
+  "sql_fix": "schema cria public.bets antes de policies/realtime e usa drop policy if exists"
+}
