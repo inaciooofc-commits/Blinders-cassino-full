@@ -2,6 +2,7 @@ import './styles/base.css';
 import './styles/release.css';
 import './styles/games.css';
 import './styles/responsive.css';
+import './styles/v3-visual-lock.css';
 import { boot, route } from './core/Router.js';
 
 function fatal(error) {

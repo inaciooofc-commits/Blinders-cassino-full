@@ -1,0 +1,372 @@
+/* BLINDERS RELEASE V3 VISUAL LOCK */
+html, body, #app { background:#02050b !important; color:#e9ecff; }
+body { overflow-x:hidden; }
+.v3-exact-page {
+  min-height:100vh;
+  background:#02050b;
+  display:grid;
+  place-items:center;
+}
+.v3-exact-stage {
+  position:relative;
+  width:min(100vw, 1920px);
+  aspect-ratio:1672/941;
+  min-height:min(100vh, 56.28vw);
+  overflow:hidden;
+  background:#02050b;
+  box-shadow:0 0 80px rgba(0,0,0,.9);
+}
+.v3-exact-bg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  user-select:none;
+  pointer-events:none;
+}
+.v3-hotspot {
+  position:absolute;
+  display:block;
+  z-index:5;
+  border-radius:10px;
+}
+.v3-hotspot:hover {
+  outline:1px solid rgba(157,74,255,.75);
+  box-shadow:0 0 22px rgba(157,74,255,.55);
+  background:rgba(125,56,255,.06);
+}
+.hs-home{left:1.6%;top:16.5%;width:10.2%;height:3.9%}
+.hs-games{left:1.6%;top:20.7%;width:10.2%;height:3.9%}
+.hs-bank{left:1.6%;top:24.8%;width:10.2%;height:3.9%}
+.hs-transfer{left:1.6%;top:29.0%;width:10.2%;height:3.9%}
+.hs-deposit{left:1.6%;top:33.1%;width:10.2%;height:3.9%}
+.hs-withdraw{left:1.6%;top:37.3%;width:10.2%;height:3.9%}
+.hs-shop{left:1.6%;top:45.5%;width:10.2%;height:3.9%}
+.hs-admin{left:1.6%;top:62.1%;width:10.2%;height:3.9%}
+.hs-hero-play{left:48.0%;top:30.6%;width:8.6%;height:3.9%}
+.hs-bank-deposit{left:15.8%;top:84.3%;width:6.4%;height:4.0%}
+.hs-bank-withdraw{left:22.2%;top:84.3%;width:5.5%;height:4.0%}
+.hs-bank-transfer{left:28.2%;top:84.3%;width:7.9%;height:4.0%}
+.hs-shop-go{left:82.0%;top:84.3%;width:10.0%;height:3.8%}
+
+.v3-system-badge {
+  position:absolute;
+  z-index:7;
+  top:1.1%;
+  right:13.2%;
+  min-width:180px;
+  text-align:center;
+  padding:.42vw .72vw;
+  border:1px solid rgba(217,176,95,.35);
+  border-radius:999px;
+  background:rgba(2,6,16,.72);
+  color:#f6d987;
+  font-weight:700;
+  font-size:clamp(10px,.68vw,14px);
+  box-shadow:0 0 24px rgba(0,0,0,.7);
+}
+.v3-system-badge.online { border-color:rgba(103,255,146,.55); color:#87ffad; }
+.v3-system-badge.offline { border-color:rgba(255,115,115,.55); color:#ffb4b4; }
+
+.v3-card-carousel {
+  position:absolute;
+  z-index:6;
+  left:14.8%;
+  top:43.8%;
+  width:82.5%;
+  height:21.2%;
+  overflow:hidden;
+  pointer-events:auto;
+}
+.v3-card-track {
+  height:100%;
+  display:flex;
+  gap:.72vw;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  padding:.2vw 0;
+}
+.v3-card-track::-webkit-scrollbar { display:none; }
+.v3-card-item {
+  height:100%;
+  flex:0 0 11.2vw;
+  min-width:150px;
+  max-width:220px;
+  display:block;
+  scroll-snap-align:start;
+  border-radius:.6vw;
+  overflow:hidden;
+  transition:.22s ease;
+  box-shadow:0 0 18px rgba(0,0,0,.5);
+}
+.v3-card-item img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.v3-card-item:hover {
+  transform:translateY(-.35vw) scale(1.02);
+  box-shadow:0 0 26px rgba(125,56,255,.75);
+}
+.v3-car-arrow {
+  position:absolute;
+  z-index:8;
+  top:51.1%;
+  width:2.1%;
+  height:7.0%;
+  border:0;
+  color:#f6d987;
+  background:rgba(0,0,0,.28);
+  font-size:clamp(22px,2.2vw,46px);
+  text-shadow:0 0 16px rgba(125,56,255,.9);
+}
+.v3-car-arrow.left { left:13.4%; }
+.v3-car-arrow.right { right:1.0%; }
+
+.v3-live-overlay {
+  position:absolute;
+  z-index:7;
+  right:1.9%;
+  top:30.5%;
+  width:14.1%;
+  height:9.5%;
+  opacity:.85;
+  pointer-events:none;
+}
+.v3-live-overlay canvas { width:100%!important; height:100%!important; }
+
+.v3-shell {
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.80)),
+    url('/assets/v15/backgrounds/anime-casino-blue.png') center/cover fixed no-repeat !important;
+}
+.v3-main { background:rgba(0,0,0,.10); }
+.v3-side {
+  background:linear-gradient(180deg,rgba(2,5,12,.98),rgba(4,8,18,.94)) !important;
+  border-right:1px solid rgba(217,176,95,.48) !important;
+}
+.v3-brand, .v3-menu a, .v3-vip, .v3-panel, .v3-admin-menu, .v3-admin-content, .v3-stat {
+  background:linear-gradient(180deg,rgba(5,8,18,.91),rgba(2,5,12,.86)) !important;
+  border-color:rgba(217,176,95,.42) !important;
+  box-shadow:inset 0 0 0 1px rgba(125,56,255,.18), 0 18px 48px rgba(0,0,0,.45);
+}
+.v3-ticker {
+  background:rgba(2,5,12,.86)!important;
+  border-bottom:1px solid rgba(217,176,95,.35)!important;
+}
+.v3-topbar div, .v3-topbar button, .v3-topbar a {
+  background:rgba(2,5,12,.78)!important;
+  border:1px solid rgba(217,176,95,.34)!important;
+}
+.v3-hero {
+  background:
+    linear-gradient(90deg,rgba(2,5,12,.75),rgba(2,5,12,.22),rgba(2,5,12,.78)),
+    url('/assets/v15/backgrounds/anime-casino-blue.png') center/cover no-repeat !important;
+  min-height:360px!important;
+}
+.v3-hero h1 {
+  color:#f6d987!important;
+  text-shadow:0 0 28px rgba(125,56,255,.75), 0 0 8px rgba(0,0,0,.95);
+}
+.v3-section-title {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:16px 0 10px;
+  padding:12px 16px;
+  border:1px solid rgba(217,176,95,.35);
+  border-radius:12px;
+  background:rgba(2,5,12,.74);
+  color:#f6d987;
+}
+.v3-game-grid {
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(210px,1fr))!important;
+  gap:18px!important;
+  margin-top:14px!important;
+}
+.v3-game-card {
+  position:relative;
+  display:block;
+  min-height:310px;
+  border:1px solid rgba(217,176,95,.52);
+  border-radius:14px;
+  overflow:hidden;
+  background:#02050b;
+  text-decoration:none;
+  box-shadow:0 18px 46px rgba(0,0,0,.55);
+  transition:.22s;
+}
+.v3-game-card img { width:100%; height:100%; object-fit:cover; }
+.v3-game-card span {
+  position:absolute;
+  left:20%;
+  right:20%;
+  bottom:8.2%;
+  text-align:center;
+  color:#fff;
+  padding:6px 12px;
+  border:1px solid rgba(125,56,255,.75);
+  border-radius:8px;
+  background:linear-gradient(90deg,rgba(125,56,255,.82),rgba(3,7,20,.85));
+  text-transform:uppercase;
+  font-weight:800;
+}
+.v3-game-card:hover { transform:translateY(-5px); box-shadow:0 0 34px rgba(125,56,255,.55); }
+.v3-game-card.locked:after {
+  content:'MANUTENÇÃO';
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  background:rgba(0,0,0,.78);
+  color:#ff8585;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.v3-admin-layout {
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+.v3-admin-menu {
+  max-height:calc(100vh - 140px);
+  overflow:auto;
+  padding:14px;
+  border:1px solid rgba(217,176,95,.42);
+  border-radius:14px;
+}
+.v3-admin-menu h2 {
+  margin:0 0 12px;
+  color:#f6d987;
+}
+.v3-admin-menu a {
+  display:grid;
+  gap:3px;
+  padding:10px 12px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:9px;
+  text-decoration:none;
+  margin-bottom:7px;
+  background:rgba(0,0,0,.20);
+}
+.v3-admin-menu a.active, .v3-admin-menu a:hover {
+  border-color:rgba(125,56,255,.8);
+  background:linear-gradient(90deg,rgba(125,56,255,.42),rgba(0,0,0,.2));
+  box-shadow:0 0 18px rgba(125,56,255,.25);
+}
+.v3-admin-menu span {
+  color:#a6acbb;
+  font-size:.82rem;
+}
+.v3-admin-content {
+  min-width:0;
+  padding:16px;
+  border:1px solid rgba(217,176,95,.42);
+  border-radius:14px;
+}
+.v3-admin-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(217,176,95,.22);
+}
+.v3-admin-head h2 {
+  margin:0;
+  color:#f6d987;
+  font-size:2rem;
+}
+.v3-admin-head p {
+  margin:.2rem 0 0;
+  color:#a6acbb;
+}
+.v3-admin-stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:14px;
+}
+.v3-stat {
+  padding:16px;
+  border:1px solid rgba(217,176,95,.34);
+  border-radius:12px;
+}
+.v3-stat span { color:#a6acbb; }
+.v3-stat b {
+  display:block;
+  color:#f6d987;
+  font-size:1.8rem;
+  margin:5px 0;
+}
+.v3-stat small { color:#67ff92; }
+.v3-chart-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(260px,1fr));
+  gap:14px;
+}
+.v3-chart-grid .v3-panel { min-height:280px; }
+.v3-chart-grid canvas {
+  width:100%!important;
+  height:220px!important;
+}
+.v3-admin-cards {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(260px,1fr));
+  gap:14px;
+}
+.v3-check {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 10px;
+  margin:5px 0;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  background:rgba(0,0,0,.24);
+}
+.v3-mini-items {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+}
+.v3-mini-items img, .v3-icon {
+  width:64px;
+  height:64px;
+  object-fit:contain;
+}
+.v3-bank-grid article, .v3-shop-card, .v3-panel {
+  background:linear-gradient(180deg,rgba(5,8,18,.92),rgba(2,5,12,.82))!important;
+  border:1px solid rgba(217,176,95,.42)!important;
+  border-radius:14px!important;
+}
+.v3-shop-grid {
+  grid-template-columns:repeat(5,minmax(170px,1fr))!important;
+}
+.v3-game-table {
+  min-height:680px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(217,176,95,.55)!important;
+}
+.v3-bottom span {
+  background:rgba(2,5,12,.82)!important;
+  border:1px solid rgba(217,176,95,.34)!important;
+}
+
+@media(max-width:1100px) {
+  .v3-exact-page { place-items:start; overflow:auto; }
+  .v3-exact-stage { width:1200px; min-height:676px; }
+  .v3-admin-layout { grid-template-columns:1fr; }
+  .v3-admin-menu { max-height:none; }
+  .v3-admin-stats, .v3-chart-grid, .v3-admin-cards { grid-template-columns:1fr; }
+  .v3-game-grid, .v3-shop-grid { grid-template-columns:repeat(2,minmax(180px,1fr))!important; }
+}
+@media(max-width:760px) {
+  .v3-game-grid, .v3-shop-grid { grid-template-columns:1fr!important; }
+}
