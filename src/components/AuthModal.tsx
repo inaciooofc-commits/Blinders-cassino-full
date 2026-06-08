@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Shield, UserPlus } from 'lucide-react';
 import { studioAssets } from '../lib/studioAssets';
+import { ReleaseBadge } from './ReleaseBadge';
 
 interface AuthModalProps {
   onSignIn: (email: string, password: string) => Promise<void>;
@@ -28,6 +29,7 @@ export const AuthModal = ({ onSignIn, onSignUp, onGoogle }: AuthModalProps) => {
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-8" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,2,10,.86), rgba(5,2,10,.38), rgba(5,2,10,.86)), url(${studioAssets.backgrounds.control})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+      <ReleaseBadge />
       <div className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at center, transparent 0 18%, rgba(255,69,0,.18) 19%, transparent 20%, transparent 30%, rgba(255,215,0,.12) 31%, transparent 32%)', animation: 'sealPulse 4s ease-in-out infinite' }} />
       <motion.section initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel relative z-10 mx-auto mt-10 max-w-[520px] rounded-[2rem] p-6 md:mt-20 md:p-8">
         <div className="mb-6 text-center">

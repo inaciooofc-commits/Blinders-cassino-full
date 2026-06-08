@@ -188,3 +188,50 @@ select {
     0 0 34px rgba(255, 69, 0, .14),
     0 0 44px rgba(41, 169, 255, .08);
 }
+
+
+/* V4.1 force deploy visual */
+.v4-force-layout {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .84), rgba(5, 2, 10, .24), rgba(5, 2, 10, .88)),
+    url('/assets/studio/backgrounds/casino-lobby.png?v=4.1.0') center/cover fixed no-repeat !important;
+}
+
+.release-badge {
+  position: fixed;
+  z-index: 99999;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  gap: 2px;
+  min-width: 190px;
+  padding: 10px 13px;
+  border: 1px solid rgba(255, 215, 0, .35);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(5, 2, 10, .92), rgba(139, 0, 0, .48));
+  box-shadow: 0 0 28px rgba(255, 69, 0, .25), 0 0 42px rgba(41, 169, 255, .12);
+  color: #fff7df;
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+}
+
+.release-badge span {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: #ffd700;
+}
+
+.release-badge b {
+  font-size: 13px;
+  letter-spacing: .12em;
+  color: #f8f4e8;
+}
+
+@media (max-width: 720px) {
+  .release-badge {
+    right: 10px;
+    bottom: 76px;
+    min-width: 154px;
+    padding: 8px 10px;
+  }
+}

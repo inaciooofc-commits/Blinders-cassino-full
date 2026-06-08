@@ -1,0 +1,18 @@
+{
+  "release": "V4.1_GRAPHIC_FORCE_DEPLOY",
+  "version": "4.1.0",
+  "fixed_problem": "layout novo não aparecia depois do deploy",
+  "added": [
+    "src/lib/cacheReset.ts",
+    "src/lib/release.ts",
+    "src/components/ReleaseBadge.tsx",
+    "public/_headers",
+    "public/_redirects",
+    "assets com cache bust ?v=4.1.0",
+    "badge visual da versão",
+    "v4-force-layout"
+  ],
+  "expected_visual_marker": "BLINDERS GRAPHIC ENGINES 4.1.0",
+  "deploy_instruction": "subir o pacote full V4.1 ou aplicar patch force-layout completo; não usar somente hotfix pequeno",
+  "missing": []
+}

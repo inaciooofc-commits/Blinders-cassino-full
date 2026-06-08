@@ -19,6 +19,7 @@ import { VipPage } from './VipPage';
 import { EventsPage } from './EventsPage';
 import { AuthModal } from '../components/AuthModal';
 import { StudioShowcase } from '../components/StudioShowcase';
+import { ReleaseBadge } from '../components/ReleaseBadge';
 import { isSupabaseConfigured } from '../lib/supabase';
 
 export const MainApp = () => {
@@ -58,7 +59,8 @@ export const MainApp = () => {
   };
 
   return (
-    <main className="studio-lobby-bg min-h-screen">
+    <main className="studio-lobby-bg v4-force-layout min-h-screen">
+      <ReleaseBadge />
       <LeafParticles />
       <Sidebar active={view} profile={profile} onNavigate={setView} onSignOut={auth.signOut} />
       <MobileNav onNavigate={setView} />
