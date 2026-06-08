@@ -1,0 +1,15 @@
+{
+  "hotfix": "V4_GRAPHIC_ENGINES_TS1005_FIX",
+  "fixed_files": [
+    "src/games/BlackjackGame.tsx",
+    "src/games/RouletteGame.tsx",
+    "src/games/SlotMachine.tsx"
+  ],
+  "changed_files": [
+    "src/games/BlackjackGame.tsx",
+    "src/games/RouletteGame.tsx",
+    "src/games/SlotMachine.tsx"
+  ],
+  "syntax_pattern_alerts": {},
+  "expected_result": "remove TS1005 ':' expected em BlackjackGame, RouletteGame e SlotMachine"
+}
