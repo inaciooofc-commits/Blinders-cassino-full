@@ -1,24 +1,12 @@
 {
-  "name": "Blinders Cassino",
-  "short_name": "Blinders",
-  "description": "Blinders Cassino privado com Banco IRIS, jogos e admin center.",
-  "start_url": "/menu",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#050506",
-  "theme_color": "#111113",
-  "icons": [
-    {
-      "src": "/assets/icons/home.svg",
-      "sizes": "160x160",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/assets/icons/actions/admin.svg",
-      "sizes": "160x160",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "name":"Blinders Cassino",
+  "short_name":"Blinders",
+  "description":"Blinders Cassino — lançamento visual anime/cyber",
+  "start_url":"/",
+  "scope":"/",
+  "display":"standalone",
+  "orientation":"any",
+  "background_color":"#02050b",
+  "theme_color":"#050816",
+  "icons":[{"src":"/assets/v14/icons/home.png","sizes":"256x256","type":"image/png","purpose":"any maskable"}]
 }

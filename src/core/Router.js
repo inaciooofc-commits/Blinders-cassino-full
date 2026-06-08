@@ -59,11 +59,14 @@ let charts = [];
 export async function boot() {
   showLoading();
   updateLoading(24, 'Carregando visual de lançamento');
-  const remote = await IrisSQL.boot(state.member.nick);
+  const remote = await IrisSQL.boot();
   if (remote?.ok) {
     applyRemote(remote);
     state.sqlConnected = true;
     state.sqlMessage = 'Banco IRIS online';
+  } else if (remote?.needsLogin) {
+    state.sqlConnected = false;
+    state.sqlMessage = 'Aguardando login';
   } else {
     state.sqlConnected = false;
     state.sqlMessage = remote?.error || 'Banco IRIS indisponível';
@@ -83,6 +86,10 @@ export function route() {
   const path = location.pathname || '/';
   const q = new URLSearchParams(location.search);
 
+  if (path === '/login') return render(app, loginPage('login'));
+  if (path === '/register') return render(app, loginPage('register'));
+  if (path === '/repair') return render(app, loginPage('repair'));
+  if (!IrisSQL.hasSession()) return render(app, loginPage('login'));
   if (path === '/' || path === '/home') return render(app, homeExact());
   if (path === '/games') return render(app, gamesPage());
   if (path === '/game') return render(app, gamePage(q.get('game') || 'roulette'));
@@ -117,7 +124,7 @@ function homeExact() {
   <main class="v3-exact-page">
     <section class="v3-exact-stage">
       <img class="v3-exact-bg" src="/assets/v15/reference/home-dashboard-exact.png" alt="Blinders Cassino lançamento">
-      <div class="v3-system-badge ${state.sqlConnected ? 'online' : 'offline'}">${esc(state.sqlMessage)}</div>
+      <div class="v3-system-badge ${state.sqlConnected ? 'online' : 'offline'}">${esc(state.sqlMessage)}</div><button class="v4-install-floating" data-install-app>Instalar app</button><button class="v4-logout-floating" data-logout>Sair</button>
 
       <a class="v3-hotspot hs-home" href="/home" aria-label="Home"></a>
       <a class="v3-hotspot hs-games" href="/games" aria-label="Jogos"></a>
@@ -145,6 +152,33 @@ function homeExact() {
       <div class="v3-live-overlay">
         <canvas id="homeActivityChart"></canvas>
       </div>
+    </section>
+  </main>`;
+}
+
+
+function loginPage(mode='login') {
+  const isRegister = mode === 'register';
+  const isRepair = mode === 'repair';
+  const title = isRegister ? 'Criar conta' : isRepair ? 'Reparar senha' : 'Entrar';
+  return `
+  <main class="v4-auth-page">
+    <section class="v4-auth-bg"><img src="/assets/v15/reference/home-dashboard-exact.png" alt=""></section>
+    <section class="v4-auth-card">
+      <div class="v4-auth-logo"><img src="/assets/v14/icons/home.png"><b>BLINDERS</b><span>CASINO</span></div>
+      <div class="v4-auth-info"><div class="v4-auth-info-track">
+        <article><b>Visual de lançamento</b><span>Interface anime/cyber espelhada na home oficial.</span></article>
+        <article><b>Banco IRIS</b><span>Saldo, depósito, saque e transferência conectados ao SQL.</span></article>
+        <article><b>Jogos e territórios</b><span>Mesas, carrossel, mapa, famílias, máfias e eventos.</span></article>
+      </div></div>
+      <h1>${title}</h1>
+      <p>${isRegister ? 'Cadastre com nick, conta IRIS/Zarcovi, telefone e senha do app.' : isRepair ? 'Use seu nick/IRIS e telefone cadastrado para definir nova senha.' : 'Entre para acessar o lançamento.'}</p>
+      <form class="v4-auth-form" data-auth-form="${mode}">
+        ${isRegister ? `<label>Nick<input id="authNick" required placeholder="Seu nick"></label><label>Conta IRIS/Zarcovi<input id="authIris" required placeholder="IRIS-KAGE-777"></label><label>Telefone<input id="authPhone" required placeholder="xx xxxxx-xxxx" maxlength="13"></label><label>Senha do app<input id="authPassword" type="password" required placeholder="Senha somente do app"></label><button type="submit">Criar conta</button>` : isRepair ? `<label>Nick ou IRIS<input id="authLogin" required placeholder="KageShinobi ou IRIS-KAGE-777"></label><label>Telefone cadastrado<input id="authPhone" required placeholder="xx xxxxx-xxxx" maxlength="13"></label><label>Nova senha<input id="authPassword" type="password" required placeholder="Nova senha do app"></label><button type="submit">Reparar senha</button>` : `<label>Nick ou IRIS<input id="authLogin" required value="KageShinobi"></label><label>Senha<input id="authPassword" type="password" required placeholder="Senha do app"></label><button type="submit">Entrar</button>`}
+      </form>
+      <nav class="v4-auth-links"><a href="/login">Entrar</a><a href="/register">Criar conta</a><a href="/repair">Reparar senha</a></nav>
+      <button class="v4-install-auth" data-install-app>Instalar app</button>
+      <small class="v4-auth-note">Não use a senha real da sua conta Zarcovi. Use uma senha própria para este app.</small>
     </section>
   </main>`;
 }
@@ -179,7 +213,7 @@ function shell(title, body, active='home') {
       <header class="topbar v3-topbar">
         <button data-menu>Menu</button>
         <div>${esc(state.member.nick)} • Nível ${state.member.level || 1} • Saldo ${oldMoney(state.balance)}</div>
-        <nav><button data-radio-toggle>Rádio</button><a href="/admin">Admin</a></nav>
+        <nav><button data-install-app>Instalar</button><button data-radio-toggle>Rádio</button><button data-logout>Sair</button><a href="/admin">Admin</a></nav>
       </header>
       <section class="hero v3-hero"><h1>${esc(title)}</h1><p>${state.sqlConnected ? 'Banco IRIS online' : 'Banco IRIS indisponível'}</p></section>
       ${body}
@@ -344,6 +378,10 @@ function bindLinks(){
 
 function bindActions(){
   document.querySelector('[data-menu]')?.addEventListener('click',()=>document.body.classList.toggle('menu-open'));
+  document.querySelector('[data-logout]')?.addEventListener('click',()=>{ IrisSQL.logout(); history.pushState({},'', '/login'); route(); });
+  document.querySelector('[data-install-app]')?.addEventListener('click',installApp);
+  document.querySelector('[data-auth-form]')?.addEventListener('submit',submitAuth);
+  document.querySelectorAll('#authPhone').forEach(input=>input.addEventListener('input',()=>{ input.value = maskPhone(input.value); }));
   document.querySelector('[data-radio-toggle]')?.addEventListener('click',()=>toast(state.radio.title ? `Rádio: ${state.radio.title}` : 'Nenhuma rádio ativa.', 'warn'));
   document.querySelector('[data-quick-transfer]')?.addEventListener('click',()=>doTransfer('#quickTo','#quickAmount'));
   document.querySelector('[data-bank="transfer"]')?.addEventListener('click',()=>doTransfer('#transferTo','#transferAmount'));
@@ -409,6 +447,31 @@ function chartOptions(showLegend=true) {
 function destroyCharts() {
   charts.forEach(c => c.destroy());
   charts = [];
+}
+
+
+let deferredInstall = null;
+window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); deferredInstall = event; });
+async function installApp() {
+  if (deferredInstall) { deferredInstall.prompt(); await deferredInstall.userChoice.catch(() => null); deferredInstall = null; return; }
+  toast('Use o menu do navegador e escolha instalar/adicionar à tela inicial.', 'warn');
+}
+function maskPhone(value) {
+  const digits = String(value || '').replace(/\D/g,'').slice(0,11);
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 7) return `${digits.slice(0,2)} ${digits.slice(2)}`;
+  return `${digits.slice(0,2)} ${digits.slice(2,7)}-${digits.slice(7)}`;
+}
+async function submitAuth(event) {
+  event.preventDefault();
+  const mode = event.currentTarget.dataset.authForm;
+  let res;
+  if (mode === 'register') res = await IrisSQL.register(document.querySelector('#authNick')?.value || '', document.querySelector('#authIris')?.value || '', document.querySelector('#authPhone')?.value || '', document.querySelector('#authPassword')?.value || '');
+  else if (mode === 'repair') res = await IrisSQL.repairPassword(document.querySelector('#authLogin')?.value || '', document.querySelector('#authPhone')?.value || '', document.querySelector('#authPassword')?.value || '');
+  else res = await IrisSQL.login(document.querySelector('#authLogin')?.value || '', document.querySelector('#authPassword')?.value || '');
+  if (!res?.ok) { toast(res?.error || 'Não foi possível concluir.', 'bad'); return; }
+  if (mode === 'repair') { toast('Senha reparada. Faça login.', 'good'); history.pushState({},'', '/login'); route(); return; }
+  applyRemote(res); state.sqlConnected = true; state.sqlMessage = 'Banco IRIS online'; toast(mode === 'register' ? 'Conta criada.' : 'Login aprovado.', 'good'); history.pushState({},'', '/home'); route();
 }
 
 async function requireSql(action){
