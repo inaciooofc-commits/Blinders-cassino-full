@@ -1,0 +1,20 @@
+{
+  "project": "blinders-ninja-studio-react-v4-graphic-engines",
+  "front_only": true,
+  "backgrounds": 3,
+  "icons": 36,
+  "engines": [
+    "ChakraParticleEngine",
+    "PixiCasinoEngine",
+    "ThreeShowcaseEngine"
+  ],
+  "components": [
+    "StudioCanvas",
+    "PixiStage",
+    "ThreeShowcase",
+    "StudioShowcase"
+  ],
+  "missing_assets": [],
+  "syntax_alerts": [],
+  "note": "Validação estática; execute npm install e npm run build no ambiente do projeto."
+}

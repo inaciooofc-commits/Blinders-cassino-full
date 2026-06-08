@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05020a;
+  --obsidian: #0b0712;
+  --panel: rgba(12, 8, 22, 0.78);
+  --panel-strong: rgba(9, 5, 18, 0.94);
+  --red: #8b0000;
+  --flame: #ff4500;
+  --gold: #ffd700;
+  --konoha: #228b22;
+  --chakra-blue: #29a9ff;
+  --chakra-red: #ff2d2d;
+  --text: #f8f4e8;
+  --muted: #b6a98d;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.ninja-bg {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 69, 0, 0.12), transparent 28%),
+    radial-gradient(circle at 76% 18%, rgba(41, 169, 255, 0.13), transparent 30%),
+    radial-gradient(circle at 60% 72%, rgba(255, 215, 0, 0.10), transparent 24%),
+    linear-gradient(135deg, #05020a 0%, #0b0712 44%, #110407 100%);
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(13, 9, 24, 0.88), rgba(7, 4, 14, 0.72));
+  border: 1px solid rgba(255, 215, 0, 0.26);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 69, 0, 0.12),
+    0 24px 70px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+.chakra-glow {
+  box-shadow:
+    0 0 18px rgba(255, 69, 0, 0.35),
+    0 0 34px rgba(41, 169, 255, 0.18);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.btn-primary {
+  border: 1px solid rgba(255, 215, 0, 0.38);
+  background: linear-gradient(90deg, rgba(139, 0, 0, 0.94), rgba(255, 69, 0, 0.66));
+  color: #fff7df;
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(255, 69, 0, 0.35);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff7df;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.input-ninja {
+  width: 100%;
+  border: 1px solid rgba(255, 215, 0, 0.23);
+  background: rgba(0, 0, 0, 0.36);
+  color: #fff7df;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  outline: none;
+}
+
+.input-ninja:focus {
+  border-color: rgba(255, 69, 0, 0.72);
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.13);
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-hidden {
+  scrollbar-width: none;
+}
+
+@keyframes ticker {
+  from { transform: translateX(5%); }
+  to { transform: translateX(-80%); }
+}
+
+@keyframes leafFloat {
+  0% { transform: translate3d(0, -8vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: .75; }
+  100% { transform: translate3d(-14vw, 108vh, 0) rotate(720deg); opacity: 0; }
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); opacity: .62; }
+  50% { transform: scale(1.08); opacity: .95; }
+}
+
+@keyframes smokeIn {
+  0% { opacity: 0; transform: translateY(16px) scale(.98); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.animate-smoke-in {
+  animation: smokeIn .45s ease both;
+}
+
+
+/* Studio asset integration */
+.studio-lobby-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .84), rgba(5, 2, 10, .24), rgba(5, 2, 10, .88)),
+    url('/assets/studio/backgrounds/casino-lobby.png') center/cover fixed no-repeat;
+}
+
+.studio-lounge-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .82), rgba(5, 2, 10, .28), rgba(5, 2, 10, .82)),
+    url('/assets/studio/backgrounds/casino-lounge.png') center/cover fixed no-repeat;
+}
+
+.studio-control-bg {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 10, .86), rgba(5, 2, 10, .36), rgba(5, 2, 10, .88)),
+    url('/assets/studio/backgrounds/control-room.png') center/cover fixed no-repeat;
+}
+
+.asset-card {
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.asset-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(255, 69, 0, .25), transparent 26%),
+    linear-gradient(180deg, transparent, rgba(0,0,0,.76));
+}
+
+.icon-img {
+  width: 1.65rem;
+  height: 1.65rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 69, 0, .3));
+}
+
+.model-frame {
+  border: 1px solid rgba(255, 215, 0, .22);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 69, 0, .12),
+    0 0 34px rgba(255, 69, 0, .14),
+    0 0 44px rgba(41, 169, 255, .08);
+}

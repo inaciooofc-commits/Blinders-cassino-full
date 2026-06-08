@@ -1,6 +1,6 @@
 {
   "name": "blinders-ninja-studio-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,7 +20,8 @@
     "gsap": "latest",
     "framer-motion": "latest",
     "howler": "latest",
-    "lucide-react": "latest"
+    "lucide-react": "latest",
+    "three": "latest"
   },
   "devDependencies": {
     "tailwindcss": "latest",
